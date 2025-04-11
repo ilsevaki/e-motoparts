@@ -1,58 +1,30 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Produtos - E-motoparts</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .produto {
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
-    }
-    .produto h2 {
-      margin: 0 0 10px 0;
-    }
-    .produto button {
-      background-color: #222;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produtos</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <h1>Nossos Produtos</h1>
-
-  <div class="produto">
-    <h2>Pastilha de Freio</h2>
-    <p>Compatível com várias motos | R$ 49,90</p>
-    <button onclick="window.location.href='checkout.html'">Comprar</button>
-  </div>
-
-  <div class="produto">
-    <h2>Kit Relação</h2>
-    <p>Corrente, coroa e pinhão | R$ 129,90</p>
-    <button onclick="window.location.href='checkout.html'">Comprar</button>
-  </div>
-
-  <div class="produto">
-    <h2>Capacete Aberto</h2>
-    <p>Proteção e estilo para o dia a dia | R$ 99,90</p>
-    <button onclick="window.location.href='checkout.html'">Comprar</button>
-  </div>
-
+  <header>
+    <nav>
+      <ul class="menu-horizontal">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Produtos</h1>
+    <div class="produto">
+      <img src="imagens/produto1.jpg" alt="Produto 1" />
+      <p>Farol Esportivo - R$150</p>
+      <button onclick="adicionarAoCarrinho('Farol Esportivo', 150)">Comprar</button>
+    </div>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>

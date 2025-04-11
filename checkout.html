@@ -1,66 +1,31 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Checkout - E-motoparts</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    form {
-      max-width: 400px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    input {
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #222;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <h1>Finalizar Pedido</h1>
-
-  <form onsubmit="enviarWhatsApp(event)">
-    <input type="text" id="nome" placeholder="Seu nome" required />
-    <input type="text" id="endereco" placeholder="Endereço de entrega" required />
-    <input type="tel" id="telefone" placeholder="Telefone" required />
-    <button type="submit">Confirmar e Enviar via WhatsApp</button>
-  </form>
-
-  <script>
-    function enviarWhatsApp(event) {
-      event.preventDefault();
-      const nome = document.getElementById('nome').value;
-      const endereco = document.getElementById('endereco').value;
-      const telefone = document.getElementById('telefone').value;
-
-      const mensagem = `Olá! Meu nome é ${nome}, gostaria de finalizar o pedido. 
-Endereço: ${endereco} 
-Telefone: ${telefone}`;
-
-      const url = `https://wa.me/seunumerodowhatsapp?text=${encodeURIComponent(mensagem)}`;
-      window.open(url, '_blank');
-    }
-  </script>
-
+  <header>
+    <nav>
+      <ul class="menu-horizontal">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Finalizar Compra</h1>
+    <form id="formCheckout">
+      <input type="text" placeholder="Nome" required />
+      <input type="text" placeholder="Endereço" required />
+      <input type="email" placeholder="E-mail" required />
+      <button type="submit">Pagar com Mercado Pago</button>
+    </form>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
