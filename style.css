@@ -125,7 +125,7 @@ footer .redes img:hover {
   height: 30px;
   bottom: 60px;
   right: 60px;
-  z-index: 1000;
+  z-index: 100;
   background-color: #25D366;
   border-radius: 50%;
   display: flex;
