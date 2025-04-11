@@ -1,84 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
 }
 
 header {
-    background-color: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: #111;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
 }
 
-.logo {
-    font-size: 1.5em;
+.logo img {
+  height: 50px;
 }
 
-nav {
-    flex-grow: 1;
+nav ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
-.menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
+nav ul.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 10px;
+  transition: background 0.3s, color 0.3s;
 }
 
-.menu li {
-    position: relative;
-}
-
-.menu > li {
-    margin-left: 20px;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-}
-
-.menu a:hover {
-    background-color: #444;
-}
-
-.submenu {
-    display: none;
-    position: absolute;
-    background-color: #222;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    top: 100%;
-    left: 0;
-    min-width: 150px;
-    z-index: 1000;
-}
-
-.submenu li a {
-    padding: 10px;
-    color: white;
-    display: block;
-}
-
-.submenu li a:hover {
-    background-color: #555;
-}
-
-.dropdown:hover .submenu {
-    display: block;
+nav ul.menu li a:hover {
+  background-color: white;
+  color: #111;
+  border-radius: 4px;
 }
 
 main {
-    padding: 20px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.bemvindo {
-    text-align: center;
+.destaque {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.destaque h1 {
+  font-size: 2.5rem;
+  color: #222;
+}
+
+.ofertas h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.produtos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.produto {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.produto:hover {
+  transform: scale(1.03);
+}
+
+.produto img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #111;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+footer .redes {
+  margin-bottom: 1rem;
+}
+
+footer .redes a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+footer .redes img {
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+footer .redes img:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp img {
+  height: 20px; /* reduzido para 1/3 como você pediu */
 }
