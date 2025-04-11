@@ -1,45 +1,58 @@
-
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
 }
-
 header {
-  background-color: #000;
-  color: white;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 10px;
-}
-
-.menu-horizontal {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-horizontal li a {
+  align-items: center;
+  background: #111;
   color: white;
-  text-decoration: none;
+  padding: 10px 20px;
 }
-
 .logo {
   height: 50px;
 }
-
-.logo-mini {
-  height: 20px;
-  margin: 10px;
+.menu-horizontal a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
 }
-
-main {
+.carrinho-icon {
+  cursor: pointer;
+}
+.produto {
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.produto img {
+  max-width: 100%;
+  height: auto;
+}
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
   padding: 20px;
 }
-
-.produto {
-  margin: 20px 0;
+.icon {
+  height: 30px;
+  margin: 5px;
+}
+.icon.pequeno {
+  height: 15px;
+}
+.carrinho {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  display: none;
 }

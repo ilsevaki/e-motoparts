@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,34 +8,52 @@
 </head>
 <body>
   <header>
-    <img src="imagens/logo.png" alt="E-motoparts" class="logo" />
-    <nav>
-      <ul class="menu-horizontal">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
-      </ul>
+    <img src="logo.png" alt="Logo E-motoparts" class="logo" />
+    <nav class="menu-horizontal">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
     </nav>
+    <div class="carrinho-icon" onclick="abrirCarrinho()">🛒</div>
   </header>
 
-  <main>
-    <h1>Bem-vindo à E-motoparts</h1>
+  <main id="inicio">
     <section class="ofertas">
-      <h2>Itens em Oferta</h2>
+      <h2>Ofertas</h2>
       <div class="produto">
-        <img src="imagens/produto1.jpg" alt="Produto 1" />
-        <p>Farol Esportivo - R$150</p>
-        <button onclick="adicionarAoCarrinho('Farol Esportivo', 150)">Comprar</button>
+        <img src="produto1.jpg" alt="Produto 1" />
+        <h3>Kit Relação Honda</h3>
+        <p>R$ 120,00</p>
+        <button onclick="adicionarAoCarrinho('Kit Relação Honda', 120)">Comprar</button>
+      </div>
+    </section>
+
+    <section id="produtos">
+      <h2>Todos os Produtos</h2>
+      <div class="produto">
+        <img src="produto1.jpg" alt="Produto 1" />
+        <h3>Kit Relação Honda</h3>
+        <p>R$ 120,00</p>
+        <button onclick="adicionarAoCarrinho('Kit Relação Honda', 120)">Comprar</button>
       </div>
     </section>
   </main>
 
-  <footer>
-    <a href="https://wa.me/5500000000000" target="_blank">
-      <img src="imagens/whatsapp.png" alt="WhatsApp" class="logo-mini" />
+  <footer id="contato">
+    <p>Contato pelo WhatsApp:</p>
+    <a href="https://wa.me/5511999999999" target="_blank">
+      <img src="whatsapp.png" alt="WhatsApp" class="icon pequeno" />
     </a>
-    <img src="imagens/mercadopago.png" alt="Mercado Pago" class="logo-mini" />
+    <p>Pagamentos via</p>
+    <img src="mercadopago.png" alt="Mercado Pago" class="icon" />
   </footer>
+
+  <div id="carrinho" class="carrinho">
+    <h2>Carrinho</h2>
+    <ul id="itens-carrinho"></ul>
+    <p id="total">Total: R$ 0,00</p>
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
