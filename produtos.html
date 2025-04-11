@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - E-motoparts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .produto {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .produto img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .produto h3 {
+      margin: 0.5rem 0;
+    }
+    .produto p {
+      color: #25a;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .produto button {
+      background-color: #25d366;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #carrinho {
+      background-color: #ffe600;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>E-motoparts</h1>
+    <nav>
+      <a href="/">Início</a>
+      <a href="produtos.html">Produtos</a>
+    </nav>
+  </header>
+
+  <div id="carrinho">
+    <strong>Carrinho:</strong> <span id="itens-carrinho">0</span> itens
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
+  </div>
+
+  <main class="produtos">
+    <div class="produto">
+      <img src="https://via.placeholder.com/250x150" alt="Peça 1">
+      <h3>Peça de Moto A</h3>
+      <p>R$ 99,90</p>
+      <button onclick="adicionarAoCarrinho('Peça de Moto A', 99.90)">Adicionar</button>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/250x150" alt="Peça 2">
+      <h3>Peça de Moto B</h3>
+      <p>R$ 149,90</p>
+      <button onclick="adicionarAoCarrinho('Peça de Moto B', 149.90)">Adicionar</button>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/250x150" alt="Peça 3">
+      <h3>Peça de Moto C</h3>
+      <p>R$ 79,90</p>
+      <button onclick="adicionarAoCarrinho('Peça de Moto C', 79.90)">Adicionar</button>
+    </div>
+  </main>
+
+  <script>
+    let itens = 0;
+    let carrinho = [];
+
+    function adicionarAoCarrinho(nome, preco) {
+      itens++;
+      document.getElementById('itens-carrinho').innerText = itens;
+      carrinho.push({ nome, preco });
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    }
+
+    function finalizarCompra() {
+      window.location.href = 'checkout.html';
+    }
+  </script>
+</body>
+</html>
