@@ -1,76 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-motoparts</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Motoparts</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo E-motoparts" class="logo" />
-    <nav class="menu-horizontal">
-      <a href="#inicio">Início</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <div class="carrinho-icon" onclick="abrirCarrinho()">🛒</div>
-  </header>
-
-  <main id="inicio">
-    <section class="ofertas">
-      <h2>Ofertas</h2>
-      <div class="produto">
-        <img src="produto1.jpg" alt="Produto 1" />
-        <h3>Kit Relação Honda</h3>
-        <p>R$ 120,00</p>
-        <button onclick="adicionarAoCarrinho('Kit Relação Honda', 120)">Comprar</button>
-      </div>
-    </section>
-
-    <section id="produtos">
-      <h2>Todos os Produtos</h2>
-      <div class="produto">
-        <img src="produto1.jpg" alt="Produto 1" />
-        <h3>Kit Relação Honda</h3>
-        <p>R$ 120,00</p>
-        <button onclick="adicionarAoCarrinho('Kit Relação Honda', 120)">Comprar</button>
-      </div>
-    </section>
-  </main>
-
-  <footer id="contato">
-    <p>Contato pelo WhatsApp:</p>
-    <a href="https://wa.me/5511999999999" target="_blank">
-      <img src="whatsapp.png" alt="WhatsApp" class="icon pequeno" />
-    </a>
-    <p>Pagamentos via</p>
-    <img src="mercadopago.png" alt="Mercado Pago" class="icon" />
-  </footer>
-
-  <div id="carrinho" class="carrinho">
-    <h2>Carrinho</h2>
-    <ul id="itens-carrinho"></ul>
-    <p id="total">Total: R$ 0,00</p>
-    <button onclick="finalizarCompra()">Finalizar Compra</button>
-  </div>
-  
-<nav>
-  <ul class="menu">
-    <li><a href="index.html">Início</a></li>
-    <li class="dropdown">
-      <a href="#">Produtos</a>
-      <ul class="submenu">
-        <li><a href="relacao.html">Relação</a></li>
-        <li><a href="pneus.html">Pneus</a></li>
-        <li><a href="lubrificantes.html">Lubrificantes</a></li>
-        <li><a href="pastilhas.html">Pastilhas</a></li>
-      </ul>
-    </li>
-    <li><a href="contato.html">Contato</a></li>
-  </ul>
-</nav>
-
-  <script src="script.js"></script>
+    <header>
+        <h1 class="logo">E-Motoparts</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Início</a></li>
+                <li class="dropdown">
+                    <a href="#">Produtos</a>
+                    <ul class="submenu">
+                        <li><a href="relacao.html">Relação</a></li>
+                        <li><a href="pneus.html">Pneus</a></li>
+                        <li><a href="lubrificantes.html">Lubrificantes</a></li>
+                        <li><a href="pastilhas.html">Pastilhas</a></li>
+                    </ul>
+                </li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="bemvindo">
+            <h2>Bem-vindo à E-Motoparts!</h2>
+            <p>Escolha uma categoria de produtos no menu acima.</p>
+        </section>
+    </main>
 </body>
 </html>
