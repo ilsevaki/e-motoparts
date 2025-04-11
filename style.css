@@ -125,7 +125,7 @@ footer .redes img:hover {
   height: 30px;
   bottom: 60px;
   right: 60px;
-  z-index: 100;
+  z-index: 1000;
   background-color: #25D366;
   border-radius: 50%;
   display: flex;
@@ -136,12 +136,12 @@ footer .redes img:hover {
 }
 
 .whatsapp-float:hover {
-  transform: scale(1.1);
+  transform: scale(10.1);
 }
 
 .whatsapp-icon {
-  width: 5px;
-  height: 5px;
+  width: 32px;
+  height: 32px;
 }
 
 
