@@ -121,10 +121,10 @@ footer .redes img:hover {
 
 .whatsapp-float {
   position: fixed;
-  width: 300px;
-  height: 300px;
-  bottom: 5px;
-  right: 5px;
+  width: 30px;
+  height: 30px;
+  bottom: 60px;
+  right: 60px;
   z-index: 1000;
   background-color: #25D366;
   border-radius: 50%;
