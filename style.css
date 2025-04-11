@@ -184,7 +184,7 @@ footer .redes img:hover {
   }
 
   header {
-    flex-direction: column;
+    flex-direction: line;
     text-align: center;
   }
 
