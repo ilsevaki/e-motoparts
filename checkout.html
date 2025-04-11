@@ -1,89 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Finalizar Pedido - E-motoparts</title>
+  <title>Checkout - E-motoparts</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      padding: 20px;
     }
-    header, footer {
-      background-color: #111;
-      color: white;
+    h1 {
       text-align: center;
-      padding: 1rem;
     }
-    nav {
-      background: #222;
-      padding: 0.5rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0.5rem 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-    }
-    nav a:hover {
-      background: #25d366;
-    }
-    main {
-      padding: 2rem 1rem;
-      max-width: 800px;
+    form {
+      max-width: 400px;
       margin: auto;
+      display: flex;
+      flex-direction: column;
     }
-    .pedido {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-    .pedido h2 {
-      margin-top: 0;
-    }
-    .pedido ul {
-      list-style: none;
-      padding: 0;
-    }
-    .pedido li {
-      border-bottom: 1px solid #ddd;
-      padding: 0.5rem 0;
-    }
-    .total {
-      font-weight: bold;
-      margin-top: 1rem;
+    input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     button {
-      background: #25d366;
+      background-color: #222;
       color: white;
+      padding: 10px;
       border: none;
-      padding: 0.7rem 1.5rem;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 1rem;
-    }
-    button:hover {
-      background: #1ebe56;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>E-motoparts</h1>
-  </header>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="produtos.html">Produtos</a>
-    <a href="checkout.html">Finalizar Pedido</a>
-  </nav>
-  <main>
-    <div class="pedido">
-      <h2>Seu Pedido</h2>
-      <ul id="lista"></ul>
-      <div class="total" id="total"></div
+
+  <h1>Finalizar Pedido</h1>
+
+  <form onsubmit="enviarWhatsApp(event)">
+    <input type="text" id="nome" placeholder="Seu nome" required />
+    <input type="text" id="endereco" placeholder="Endereço de entrega" required />
+    <input type="tel" id="telefone" placeholder="Telefone" required />
+    <button type="submit">Confirmar e Enviar via WhatsApp</button>
+  </form>
+
+  <script>
+    function enviarWhatsApp(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const endereco = document.getElementById('endereco').value;
+      const telefone = document.getElementById('telefone').value;
+
+      const mensagem = `Olá! Meu nome é ${nome}, gostaria de finalizar o pedido. 
+Endereço: ${endereco} 
+Telefone: ${telefone}`;
+
+      const url = `https://wa.me/seunumerodowhatsapp?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
