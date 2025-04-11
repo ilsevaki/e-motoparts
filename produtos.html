@@ -6,105 +6,52 @@
   <title>Produtos - E-motoparts</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      padding: 20px;
     }
-    header, footer {
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-    nav {
-      background: #222;
-      padding: 0.5rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0.5rem 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-    }
-    nav a:hover {
-      background: #25d366;
-    }
-    main {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .produtos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      padding: 1rem;
+    h1 {
       text-align: center;
     }
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: contain;
+    .produto {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
     }
-    .card button {
-      background: #25d366;
+    .produto h2 {
+      margin: 0 0 10px 0;
+    }
+    .produto button {
+      background-color: #222;
       color: white;
+      padding: 10px;
       border: none;
-      padding: 0.5rem 1rem;
-      margin-top: 0.5rem;
       border-radius: 5px;
       cursor: pointer;
-    }
-    .card button:hover {
-      background: #1ebe56;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>E-motoparts</h1>
-  </header>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="produtos.html">Produtos</a>
-    <a href="checkout.html">Finalizar Pedido</a>
-  </nav>
-  <main>
-    <h2>Nossos Produtos</h2>
-    <div class="produtos">
-      <div class="card">
-        <img src="https://via.placeholder.com/150x100.png?text=Pastilha+de+Freio" alt="Pastilha de Freio">
-        <h3>Pastilha de Freio</h3>
-        <p>R$ 45,00</p>
-        <button onclick="addToCart('Pastilha de Freio', 45)">Adicionar</button>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/150x100.png?text=Kit+Transmissão" alt="Kit Transmissão">
-        <h3>Kit Transmissão</h3>
-        <p>R$ 120,00</p>
-        <button onclick="addToCart('Kit Transmissão', 120)">Adicionar</button>
-      </div>
-    </div>
-  </main>
-  <footer>
-    &copy; 2025 E-motoparts
-  </footer>
-  <script>
-    function addToCart(produto, preco) {
-      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      carrinho.push({ produto, preco });
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      alert(`${produto} adicionado ao carrinho!`);
-    }
-  </script>
+
+  <h1>Nossos Produtos</h1>
+
+  <div class="produto">
+    <h2>Pastilha de Freio</h2>
+    <p>Compatível com várias motos | R$ 49,90</p>
+    <button onclick="window.location.href='checkout.html'">Comprar</button>
+  </div>
+
+  <div class="produto">
+    <h2>Kit Relação</h2>
+    <p>Corrente, coroa e pinhão | R$ 129,90</p>
+    <button onclick="window.location.href='checkout.html'">Comprar</button>
+  </div>
+
+  <div class="produto">
+    <h2>Capacete Aberto</h2>
+    <p>Proteção e estilo para o dia a dia | R$ 99,90</p>
+    <button onclick="window.location.href='checkout.html'">Comprar</button>
+  </div>
+
 </body>
 </html>
