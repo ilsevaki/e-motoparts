@@ -1,68 +1,30 @@
+
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5;
 }
+
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #111;
+  background-color: #111;
   color: white;
-  padding: 10px 20px;
-}
-.logo {
-  height: 50px;
-}
-.menu-horizontal a {
-  margin: 0 10px;
-  color: white;
-  text-decoration: none;
-}
-.carrinho-icon {
-  cursor: pointer;
-}
-.produto {
-  background: white;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1rem;
   text-align: center;
 }
-.produto img {
-  max-width: 100%;
-  height: auto;
+
+nav {
+  background-color: #222;
 }
-footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-.icon {
-  height: 30px;
-  margin: 5px;
-}
-.icon.pequeno {
-  height: 15px;
-}
-.carrinho {
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  position: fixed;
-  right: 10px;
-  top: 80px;
-  display: none;
-}
+
 .menu {
   list-style: none;
   display: flex;
   gap: 1rem;
-  background-color: #111;
+  background-color: #222;
   padding: 1rem;
   justify-content: center;
+  margin: 0;
 }
 
 .menu li {
@@ -78,7 +40,7 @@ footer {
 .submenu {
   display: none;
   position: absolute;
-  background-color: #222;
+  background-color: #333;
   list-style: none;
   margin-top: 0.5rem;
   padding: 0;
@@ -96,3 +58,34 @@ footer {
   display: block;
 }
 
+main {
+  padding: 1rem;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.produto {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.produto img {
+  width: 100%;
+  height: auto;
+}
+
+.produto button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
