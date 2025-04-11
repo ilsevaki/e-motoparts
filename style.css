@@ -56,3 +56,43 @@ footer {
   top: 80px;
   display: none;
 }
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  background-color: #111;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  list-style: none;
+  margin-top: 0.5rem;
+  padding: 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.submenu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
