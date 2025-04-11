@@ -121,8 +121,8 @@ footer .redes img:hover {
 
 .whatsapp-float {
   position: fixed;
-  width: 30px;
-  height: 30px;
+  width: 1px;
+  height: auto;
   bottom: 60px;
   right: 60px;
   z-index: 1000;
@@ -136,7 +136,7 @@ footer .redes img:hover {
 }
 
 .whatsapp-float:hover {
-  transform: scale(10.1);
+  transform: scale(1.1);
 }
 
 .whatsapp-icon {
