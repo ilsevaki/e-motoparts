@@ -1,61 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pastilhas - E-motoparts</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pastilhas | E-motoparts</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header><h1>E-motoparts</h1></header>
-  
-<nav>
-  <ul class="menu">
-    <li><a href="index.html">Início</a></li>
-    <li class="dropdown">
-      <a href="#">Produtos</a>
-      <ul class="submenu">
-        <li><a href="relacao.html">Relação</a></li>
-        <li><a href="pneus.html">Pneus</a></li>
-        <li><a href="lubrificantes.html">Lubrificantes</a></li>
-        <li><a href="pastilhas.html">Pastilhas</a></li>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="logo-branca.png" alt="Logo E-motoparts" /></a>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
-    </li>
-    <li><a href="contato.html">Contato</a></li>
-  </ul>
-</nav>
+    </nav>
+  </header>
 
   <main>
-    <h2>Pastilhas</h2>
-    <section class="produtos">
-      
-        <div class="produto">
-            <img src="pastilha1.jpg" alt="Pastilha de Freio Dianteira">
-            <h3>Pastilha de Freio Dianteira</h3>
-            <p>Honda CG 160 - Cobreq</p>
-            <p><strong>R$ 39,90</strong></p>
-            <button>Comprar</button>
-        </div>
-        
-
-        <div class="produto">
-            <img src="pastilha2.jpg" alt="Pastilha de Freio Traseira">
-            <h3>Pastilha de Freio Traseira</h3>
-            <p>Yamaha Fazer 250 - Fischer</p>
-            <p><strong>R$ 44,90</strong></p>
-            <button>Comprar</button>
-        </div>
-        
-
-        <div class="produto">
-            <img src="pastilha3.jpg" alt="Pastilha Universal">
-            <h3>Pastilha Universal</h3>
-            <p>Compatível com diversas motos</p>
-            <p><strong>R$ 34,90</strong></p>
-            <button>Comprar</button>
-        </div>
-        
-    </section>
+    <h1 class="titulo-pagina">Pastilhas</h1>
+    <div class="produtos-grid">
+      <div class="produto">
+        <img src="pastilha1.jpg" alt="Pastilha 1" />
+        <h3>Pastilha de Freio Nissin</h3>
+        <p>R$ 28,90</p>
+        <button>Comprar</button>
+      </div>
+      <div class="produto">
+        <img src="pastilha2.jpg" alt="Pastilha 2" />
+        <h3>Pastilha Traseira Fischer</h3>
+        <p>R$ 34,90</p>
+        <button>Comprar</button>
+      </div>
+      <div class="produto">
+        <img src="pastilha3.jpg" alt="Pastilha 3" />
+        <h3>Pastilha Cobreq Sport</h3>
+        <p>R$ 38,50</p>
+        <button>Comprar</button>
+      </div>
+    </div>
   </main>
+
+  <footer id="contato">
+    <div class="redes">
+      <a href="#"><img src="whatsapp-icon.png" alt="WhatsApp" class="whatsapp" /></a>
+      <a href="#"><img src="mercado-pago-logo.png" alt="Mercado Pago" /></a>
+    </div>
+    <p>&copy; 2025 E-motoparts. Todos os direitos reservados.</p>
+  </footer>
 </body>
 </html>
+
