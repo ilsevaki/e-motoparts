@@ -3,28 +3,52 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Produtos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produtos | E-motoparts</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
+    <div class="logo">
+      <a href="index.html"><img src="logo-branca.png" alt="Logo E-motoparts" /></a>
+    </div>
     <nav>
-      <ul class="menu-horizontal">
+      <ul class="menu">
         <li><a href="index.html">Início</a></li>
         <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
   </header>
+
   <main>
-    <h1>Produtos</h1>
-    <div class="produto">
-      <img src="imagens/produto1.jpg" alt="Produto 1" />
-      <p>Farol Esportivo - R$150</p>
-      <button onclick="adicionarAoCarrinho('Farol Esportivo', 150)">Comprar</button>
+    <h1 style="text-align:center; margin: 2rem 0;">Categorias de Produtos</h1>
+    <div class="produtos-grid">
+      <div class="produto">
+        <a href="relacao.html"><img src="relacao.jpg" alt="Relação" /></a>
+        <h3><a href="relacao.html">Relação</a></h3>
+      </div>
+      <div class="produto">
+        <a href="pneus.html"><img src="pneu.jpg" alt="Pneus" /></a>
+        <h3><a href="pneus.html">Pneus</a></h3>
+      </div>
+      <div class="produto">
+        <a href="lubrificantes.html"><img src="oleo.jpg" alt="Lubrificantes" /></a>
+        <h3><a href="lubrificantes.html">Lubrificantes</a></h3>
+      </div>
+      <div class="produto">
+        <a href="pastilhas.html"><img src="pastilha.jpg" alt="Pastilhas" /></a>
+        <h3><a href="pastilhas.html">Pastilhas</a></h3>
+      </div>
     </div>
   </main>
-  <script src="script.js"></script>
+
+  <footer id="contato">
+    <div class="redes">
+      <a href="#"><img src="whatsapp-icon.png" alt="WhatsApp" class="whatsapp" /></a>
+      <a href="#"><img src="mercado-pago-logo.png" alt="Mercado Pago" /></a>
+    </div>
+    <p>&copy; 2025 E-motoparts. Todos os direitos reservados.</p>
+  </footer>
 </body>
 </html>
