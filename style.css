@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.6;
@@ -17,7 +17,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10pix 20pix;
+  padding: 10px 20px;
   flex-wrap: wrap;
 }
 
@@ -36,13 +36,14 @@ nav ul.menu li a {
   text-decoration: none;
   font-weight: bold;
   padding: 6px 10px;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
 }
 
 nav ul.menu li a:hover {
   background-color: white;
   color: #111;
   border-radius: 4px;
+  transform: scale(1.05);
 }
 
 main {
@@ -127,7 +128,7 @@ footer .redes img:hover {
 }
 
 .whatsapp-float img {
-  width: 60px; /* Ajuste conforme necessário: 50px, 40px, etc */
+  width: 60px;
   height: auto;
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -136,6 +137,65 @@ footer .redes img:hover {
 
 .whatsapp-float img:hover {
   transform: scale(1.1);
+}
+
+/* Carrinho flutuante */
+.cart-float {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.cart-float img {
+  width: 50px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.cart-float img:hover {
+  transform: scale(1.1);
+}
+
+/* Botão voltar ao topo */
+.top-button {
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  background-color: #111;
+  color: white;
+  font-size: 22px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.top-button:hover {
+  background-color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  nav ul.menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo img {
+    height: 70px;
+  }
+
+  .produtos-grid {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 
