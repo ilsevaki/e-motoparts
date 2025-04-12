@@ -96,29 +96,7 @@ h2 {
   color: #444;
 }
 
-.back-to-top {
-  position: fixed;
-  bottom: 90px;
-  left: 20px;
-  background-color: #000;
-  color: #fff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-
-.back-to-top:hover {
-  background: #ff5722;
-}
-
+/* Botão flutuante do WhatsApp */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -130,8 +108,30 @@ h2 {
 
 .whatsapp-float img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
 }
+
+/* Botão voltar ao topo */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+
 @media (max-width: 768px) {
   body {
     padding: 0 10px;
