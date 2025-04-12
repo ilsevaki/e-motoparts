@@ -1,3 +1,48 @@
+<script>
+  // Menu Hamburguer - Versão Aprimorada
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburguer = document.querySelector('.menu-hamburguer');
+    const menuMobile = document.querySelector('.menu-mobile');
+    
+    // Controle do menu principal
+    hamburguer.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      this.classList.toggle('active');
+      menuMobile.classList.toggle('active');
+      document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
+    });
+
+    // Controle dos submenus
+    const dropdownButtons = document.querySelectorAll('.menu-mobile-btn');
+    dropdownButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.stopPropagation(); // Impede que o evento chegue ao menu-mobile
+        const submenu = this.nextElementSibling;
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        this.setAttribute('aria-expanded', !isExpanded);
+        submenu.classList.toggle('active');
+        
+        // Rotaciona o ícone ▾
+        this.querySelector('span').style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    });
+
+    // Fechar ao clicar em links
+    const mobileLinks = document.querySelectorAll('.menu-mobile a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburguer.classList.remove('active');
+        menuMobile.classList.remove('active');
+        hamburguer.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  });
+</script>
+
+
 let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
 function adicionarAoCarrinho(produto, preco, idProduto) {
