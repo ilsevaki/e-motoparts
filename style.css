@@ -21,8 +21,8 @@ header {
 
 .menu {
   display: flex;
-  gap: 30px;
-  align-items: justify;
+  gap: 20px;
+  align-items: center;
 }
 
 .menu a {
@@ -44,7 +44,7 @@ header {
 }
 
 .dropdown {
-  position: relative;
+  position: center;
 }
 
 .dropdown-content {
