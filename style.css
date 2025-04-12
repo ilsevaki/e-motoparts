@@ -139,40 +139,41 @@ footer .redes img:hover {
   transform: scale(1.1);
 }
 
-/* Carrinho flutuante */
-.cart-float {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  z-index: 1000;
+/* ÍCONE DO CARRINHO */
+.cart-icon img {
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+  vertical-align: middle;
+  filter: invert(1); /* branco sobre fundo escuro */
+  transition: transform 0.2s ease;
 }
 
-.cart-float img {
-  width: 50px;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.cart-float img:hover {
+.cart-icon img:hover {
   transform: scale(1.1);
 }
 
-/* Botão voltar ao topo */
-.top-button {
+/* BOTÃO VOLTAR AO TOPO */
+.back-to-top {
   position: fixed;
-  bottom: 160px;
+  bottom: 90px;
   right: 20px;
-  background-color: #111;
+  background-color: #000;
   color: white;
-  font-size: 22px;
-  padding: 10px 15px;
   border-radius: 50%;
-  text-decoration: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
-.top-button:hover {
+.back-to-top:hover {
   background-color: #333;
 }
 
