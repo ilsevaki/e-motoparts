@@ -1,151 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.cart-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 999;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-}
-
-header {
-  background-color: #111;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-}
-
-.logo img {
-  height: 90px;
-}
-
-nav ul.menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav ul.menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 6px 10px;
-  transition: background 0.3s, color 0.3s, transform 0.3s;
-}
-
-nav ul.menu li a:hover {
-  background-color: white;
-  color: #111;
-  border-radius: 4px;
-  transform: scale(1.05);
-}
-
-main {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.destaque {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.destaque h1 {
-  font-size: 2.5rem;
-  color: #222;
-}
-
-.ofertas h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.produtos-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.produto {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.produto:hover {
-  transform: scale(1.03);
-}
-
-.produto img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-footer {
-  background-color: #111;
-  color: white;
-  padding: 1.5rem;
-  text-align: center;
-}
-
-footer .redes {
-  margin-bottom: 1rem;
-}
-
-footer .redes a {
-  margin: 0 10px;
-  display: inline-block;
-}
-
-footer .redes img {
-  height: 30px;
-  transition: transform 0.3s ease;
-}
-
-footer .redes img:hover {
-  transform: scale(1.1);
-}
-
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.whatsapp-float img {
-  width: 60px;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-float img:hover {
-  transform: scale(1.1);
-}
-
-/* ÍCONE DO CARRINHO */
 .cart-icon img {
-  width: 24px;
-  height: 24px;
-  margin-left: 15px;
-  vertical-align: middle;
-  filter: invert(1); /* branco sobre fundo escuro */
+  width: 36px;
+  height: auto;
+  filter: brightness(0) invert(1);
   transition: transform 0.2s ease;
 }
 
@@ -153,51 +16,32 @@ footer .redes img:hover {
   transform: scale(1.1);
 }
 
-/* BOTÃO VOLTAR AO TOPO */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.whatsapp-float img {
+  width: 40px;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+
 .back-to-top {
   position: fixed;
-  bottom: 90px;
+  bottom: 20px;
   right: 20px;
-  background-color: #000;
-  color: white;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  cursor: pointer;
-  font-size: 18px;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-}
-
-.back-to-top:hover {
+  font-size: 28px;
   background-color: #333;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
 }
-
-/* Responsividade */
-@media (max-width: 768px) {
-  nav ul.menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header {
-    flex-direction: line;
-    text-align: center;
-  }
-
-  .logo img {
-    height: 70px;
-  }
-
-  .produtos-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-
-
