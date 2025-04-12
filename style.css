@@ -168,3 +168,82 @@ h2 {
 .icons img:hover {
   transform: scale(1.1);
 }
+/* Menu Hambúrguer */
+.menu-hamburguer {
+  display: none; /* Visível apenas em mobile */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-hamburguer .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Menu Mobile */
+.menu-mobile {
+  display: none;
+  flex-direction: column;
+  background: #333;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.menu-mobile a, .menu-mobile-btn {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submenu-mobile {
+  display: none;
+  padding-left: 20px;
+}
+
+/* Quando o menu estiver ativo */
+.menu-mobile[aria-hidden="false"] {
+  display: flex;
+}
+
+.submenu-mobile.active {
+  display: block;
+}
+
+/* Transformar o hambúrguer em "X" */
+.menu-hamburguer.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-hamburguer.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Esconder menu desktop em mobile */
+@media (max-width: 768px) {
+  .menu-hamburguer {
+    display: block;
+  }
+  
+  .menu.desktop {
+    display: none;
+  }
+}
