@@ -10,8 +10,8 @@
 <body>
 
   <!-- Ícone do WhatsApp flutuante -->
-  <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
-    <img src="whatsapp.png" alt="WhatsApp" width="60" height="60" loading="lazy">
+  <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
+    <img src="whatsapp.png" alt="WhatsApp" />
   </a>
 
   <header class="topo">
@@ -19,57 +19,54 @@
       
       <!-- Logo centralizado -->
       <div class="logo">
-        <img src="logo.png" alt="E-motoparts" width="180" height="60" loading="eager">
+        <img src="logo.png" alt="E-motoparts">
       </div>
 
-      <!-- Menu Mobile (oculto por padrão) -->
-<nav class="menu-mobile">
-  <a href="#inicio" class="mobile-link">Início</a>
-  
-  <!-- Item com Submenu -->
-  <div class="menu-mobile-item">
-    <button class="menu-mobile-btn" aria-expanded="false">
-      Produtos <span style="display: inline-block; transition: transform 0.3s">▾</span>
-    </button>
-    <div class="submenu-mobile">
-      <a href="produtos/pneus.html" class="mobile-link">Pneus</a>
-      <a href="produtos/lubrificantes.html" class="mobile-link">Lubrificantes</a>
-      <a href="produtos/pastilhas.html" class="mobile-link">Pastilhas</a>
-    </div>
-  </div>
-  
-  <a href="#contato" class="mobile-link">Contato</a>
-</nav>
-      
-      <!-- Menu Desktop -->
-      <nav class="menu-desktop" aria-label="Navegação principal">
-        <a href="#inicio">Início</a>
+      <!-- Menu Hambúrguer (Mobile) -->
+      <button class="menu-hamburguer" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
 
+      <!-- Menu Desktop -->
+      <nav class="menu-desktop">
+        <a href="#inicio">Início</a>
         <div class="dropdown">
-          <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
-            Produtos ▾
-          </button>
+          <a href="#produtos">Produtos ▾</a>
           <div class="dropdown-content">
             <a href="produtos/pneus.html">Pneus</a>
             <a href="produtos/lubrificantes.html">Lubrificantes</a>
             <a href="produtos/pastilhas.html">Pastilhas</a>
           </div>
         </div>
+        <a href="#contato">Contato</a>
+      </nav>
 
+      <!-- Menu Mobile -->
+      <nav class="menu-mobile">
+        <a href="#inicio">Início</a>
+        <div class="dropdown-mobile">
+          <button class="dropdown-btn">Produtos ▾</button>
+          <div class="dropdown-content">
+            <a href="produtos/pneus.html">Pneus</a>
+            <a href="produtos/lubrificantes.html">Lubrificantes</a>
+            <a href="produtos/pastilhas.html">Pastilhas</a>
+          </div>
+        </div>
         <a href="#contato">Contato</a>
       </nav>
 
       <!-- Ícones -->
       <div class="icons">
-        <a href="#favoritos" title="Favoritos" aria-label="Favoritos">
-          <img src="favorito.png" alt="Favoritos" width="24" height="24" loading="lazy">
+        <a href="#favoritos" title="Favoritos">
+          <img src="favorito.png" alt="Favoritos">
         </a>
-        <a href="#perfil" title="Perfil" aria-label="Perfil do usuário">
-          <img src="usuário.png" alt="Perfil" width="24" height="24" loading="lazy">
+        <a href="#perfil" title="Perfil">
+          <img src="usuario.png" alt="Perfil">
         </a>
-        <a href="#carrinho" title="Carrinho" aria-label="Carrinho de compras">
-          <img src="cart.png" alt="Carrinho" class="cart-icon" width="24" height="24" loading="lazy">
-          <span class="cart-count">0</span>
+        <a href="#carrinho" title="Carrinho">
+          <img src="cart.png" alt="Carrinho" class="cart-icon" />
         </a>
       </div>
     </div>
@@ -81,56 +78,9 @@
       <p>Sua loja online de motopeças com os melhores preços</p>
       <h2>Promoções!</h2>
       <p>Escolha uma categoria de produtos no menu acima e veja os itens em promoções.</p>
-      <a href="#produtos" class="cta-button">Ver Produtos</a>
     </section>
   </main>
 
-  <script>
-    // Menu Hambúrguer
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamburguer = document.querySelector('.menu-hamburguer');
-      const menuMobile = document.querySelector('.menu-mobile');
-      const mobileLinks = document.querySelectorAll('.mobile-link');
-      const mobileBtn = document.querySelector('.menu-mobile-btn');
-      
-      // Abrir/Fechar menu principal
-      hamburguer.addEventListener('click', () => {
-        const isExpanded = hamburguer.getAttribute('aria-expanded') === 'true';
-        hamburguer.setAttribute('aria-expanded', !isExpanded);
-        hamburguer.classList.toggle('active');
-        menuMobile.setAttribute('aria-hidden', isExpanded);
-        document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
-      });
-
-      // Submenu Mobile
-      mobileBtn.addEventListener('click', () => {
-        const submenu = document.querySelector('.submenu-mobile');
-        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-        mobileBtn.setAttribute('aria-expanded', !isExpanded);
-        submenu.classList.toggle('active');
-      });
-
-      // Fechar menu ao clicar em links
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          hamburguer.classList.remove('active');
-          menuMobile.setAttribute('aria-hidden', 'true');
-          hamburguer.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = 'auto';
-        });
-      });
-
-      // Dropdown Desktop
-      const dropdownBtn = document.querySelector('.dropdown-btn');
-      dropdownBtn.addEventListener('click', () => {
-        const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
-        dropdownBtn.setAttribute('aria-expanded', !isExpanded);
-      });
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
