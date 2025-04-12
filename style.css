@@ -21,7 +21,7 @@ header {
 
 .menu {
   display: flex;
-  gap: 13px;
+  gap: 18px;
   align-items: center;
 }
 
