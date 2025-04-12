@@ -1,112 +1,14 @@
+/* ===== ESTILOS GERAIS ===== */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   background: #f8f8f8;
   color: #333;
+  line-height: 1.6;
 }
 
-header {
-  background: #111;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.logo img {
-  height: 60px;
-}
-
-.menu {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-.menu a:hover {
-  background: #ff5722;
-  color: #fff;
-}
-
-.cart-icon {
-  width: 28px;
-  height: 28px;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #222;
-  min-width: 160px;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  border-radius: 6px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-  color: white;
-  padding: 10px 15px;
-  display: block;
-  text-decoration: none;
-}
-
-.dropdown-content a:hover {
-  background: #ff5722;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-main {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.destaque {
-  background: white;
-  border-radius: 10px;
-  padding: 40px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 800px;
-  margin: auto;
-}
-
-h1 {
-  color: #ff5722;
-}
-
-h2 {
-  color: #444;
-}
-
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.whatsapp-float img {
-  width: 48px;
-  height: 48px;
-}
+/* ===== HEADER ===== */
 .topo {
   background: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -127,13 +29,32 @@ h2 {
 
 .logo img {
   height: 50px;
+  transition: transform 0.3s ease;
 }
 
-.menu {
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== MENU DESKTOP ===== */
+.menu-desktop {
   display: flex;
   gap: 15px;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+}
+
+.menu-desktop a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.menu-desktop a:hover {
+  color: #ff5722;
+  background: rgba(255, 87, 34, 0.1);
 }
 
 .dropdown {
@@ -146,87 +67,124 @@ h2 {
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   z-index: 1001;
-  top: 30px;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #555;
+  transition: all 0.2s ease;
 }
 
-.icons img {
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.dropdown-content a:hover {
+  color: #ff5722;
+  background: rgba(255, 87, 34, 0.05);
+  padding-left: 20px;
 }
 
-.icons img:hover {
-  transform: scale(1.1);
-}
-/* Menu Hambúrguer */
+/* ===== MENU MOBILE ===== */
 .menu-hamburguer {
-  display: none; /* Visível apenas em mobile */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
+  z-index: 1002;
 }
 
 .menu-hamburguer .bar {
   display: block;
   width: 25px;
-  height: 3px;
-  background: #fff;
+  height: 2px;
+  background: #333;
   margin: 5px 0;
-  transition: 0.4s;
+  transition: all 0.3s ease;
 }
 
-/* Menu Mobile */
 .menu-mobile {
   display: none;
-  flex-direction: column;
-  background: #333;
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
-  z-index: 1000;
+  height: 100vh;
+  background: #fff;
+  padding: 80px 20px 20px;
+  z-index: 1001;
+  overflow-y: auto;
 }
 
-.menu-mobile a, .menu-mobile-btn {
-  color: white;
-  padding: 10px;
-  text-decoration: none;
+.menu-mobile.active {
+  display: block;
+}
+
+.menu-mobile-item {
+  margin-bottom: 15px;
+}
+
+.menu-mobile-btn {
+  width: 100%;
   text-align: left;
+  padding: 12px 0;
+  font-size: 1rem;
+  color: #333;
   background: none;
   border: none;
-  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 
 .submenu-mobile {
   display: none;
-  padding-left: 20px;
-}
-
-/* Quando o menu estiver ativo */
-.menu-mobile[aria-hidden="false"] {
-  display: flex;
+  padding: 10px 0 0 15px;
 }
 
 .submenu-mobile.active {
   display: block;
 }
 
-/* Transformar o hambúrguer em "X" */
+.submenu-mobile a {
+  display: block;
+  padding: 10px 0;
+  color: #666;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.submenu-mobile a:hover {
+  color: #ff5722;
+  padding-left: 5px;
+}
+
+.mobile-link {
+  display: block;
+  padding: 12px 0;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: all 0.2s ease;
+}
+
+.mobile-link:hover {
+  color: #ff5722;
+}
+
+/* Estado ativo do menu hambúrguer */
 .menu-hamburguer.active .bar:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
+  background: #ff5722;
 }
 
 .menu-hamburguer.active .bar:nth-child(2) {
@@ -234,20 +192,109 @@ h2 {
 }
 
 .menu-hamburguer.active .bar:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
+  background: #ff5722;
 }
 
-/* Esconder menu desktop em mobile */
-@media (max-width: 768px) {
-  .menu-hamburguer {
-    display: block;
-  }
-  
-  .menu.desktop {
-    display: none;
-  }
+/* ===== ÍCONES ===== */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-/* Notificações */
+
+.icons a {
+  position: relative;
+  display: inline-block;
+}
+
+.icons img {
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.icons img:hover {
+  transform: scale(1.1);
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff5722;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+main {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destaque {
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 20px auto;
+}
+
+h1 {
+  color: #ff5722;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: #444;
+  margin-top: 30px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #ff5722;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.cta-button:hover {
+  background: #e64a19;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
+}
+
+/* ===== WHATSAPP FLUTUANTE ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-5px);
+}
+
+.whatsapp-float img {
+  width: 60px;
+  height: 60px;
+}
+
+/* ===== NOTIFICAÇÕES ===== */
 .notificacao {
   position: fixed;
   bottom: 20px;
@@ -255,11 +302,62 @@ h2 {
   transform: translateX(-50%);
   background: #4CAF50;
   color: white;
-  padding: 15px;
-  border-radius: 5px;
+  padding: 12px 20px;
+  border-radius: 4px;
   z-index: 1000;
-  opacity: 1;
-  transition: opacity 0.5s;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.9rem;
+  max-width: 90%;
+  text-align: center;
 }
 
-/* ... (todo o restante do CSS) ... */
+.notificacao.show {
+  opacity: 1;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .menu-hamburguer {
+    display: block;
+  }
+  
+  .menu-desktop {
+    display: none;
+  }
+  
+  .container-header {
+    padding: 10px 15px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .destaque {
+    padding: 30px 20px;
+  }
+  
+  .whatsapp-float img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .destaque {
+    padding: 25px 15px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .icons {
+    gap: 10px;
+  }
+  
+  .icons img {
+    height: 20px;
+  }
+}
