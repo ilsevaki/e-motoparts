@@ -6,60 +6,54 @@
   <title>E-motoparts</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Fonte moderna -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Carrinho flutuante -->
-<a href="#carrinho" class="cart-float" title="Carrinho">
-  <img src="cart.png" alt="Carrinho de compras" />
-</a>
-<!-- Voltar ao topo -->
-<a href="#" class="top-button" title="Voltar ao topo">⬆</a>
+
   <header>
-
-    <div class="cart-icon">
-  <a href="#carrinho">
-    <img src="cart.png" alt="Carrinho de Compras" />
-  </a>
-</div>
-
+    <!-- Logo -->
     <div class="logo">
-      <img src="logo.png" alt="E-motoparts">
+      <img src="logo.png" alt="E-motoparts" />
     </div>
+
     <!-- MENU -->
-<nav class="menu">
-  <a href="#inicio">Início</a>
-  <a href="#sobre">Sobre</a>
-  <a href="#produtos">Produtos</a>
-  <a href="#contato">Contato</a>
-  <a href="#carrinho" class="cart-icon">
-    <img src="carrinho.png" alt="Carrinho de Compras" />
-  </a>
-</nav>
+    <nav class="menu">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+    </nav>
 
-<!-- BOTÃO VOLTAR AO TOPO -->
-<div class="back-to-top" onclick="scrollToTop()">↑</div>
-
+    <!-- Carrinho no canto superior direito -->
+    <div class="cart-icon">
+      <a href="#carrinho" title="Carrinho de Compras">
+        <img src="cart.png" alt="Carrinho de Compras" />
+      </a>
+    </div>
   </header>
 
   <main>
     <section class="destaque">
       <h1>Bem-vindo à E-motoparts</h1>
-      <p>Sua loja online de motopeças com os melhores preços
+      <p>Sua loja online de motopeças com os melhores preços</p>
 
-            <h2>Promoções!</h2>
-            <p>Escolha uma categoria de produtos no menu acima e veja os itens em promoções.</p>
-        </section>
-    </main>
+      <h2>Promoções!</h2>
+      <p>Escolha uma categoria de produtos no menu acima e veja os itens em promoções.</p>
+    </section>
+  </main>
 
+  <!-- Botão flutuante do WhatsApp -->
   <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
-  <img src="whatsapp.png" alt="WhatsApp" />
-</a>
-<script>
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
+    <img src="whatsapp.png" alt="WhatsApp" />
+  </a>
 
+  <!-- Botão voltar ao topo -->
+  <div class="back-to-top" onclick="scrollToTop()">↑</div>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
