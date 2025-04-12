@@ -22,29 +22,24 @@
         <img src="logo.png" alt="E-motoparts" width="180" height="60" loading="eager">
       </div>
 
-      <!-- Menu Hambúrguer (Mobile) -->
-      <button class="menu-hamburguer" aria-label="Menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-
       <!-- Menu Mobile (oculto por padrão) -->
-      <nav class="menu-mobile" aria-hidden="true">
-        <a href="#inicio" class="mobile-link">Início</a>
-        
-        <!-- Item com Submenu -->
-        <div class="menu-mobile-item">
-          <button class="menu-mobile-btn" aria-expanded="false">Produtos ▾</button>
-          <div class="submenu-mobile">
-            <a href="produtos/pneus.html" class="mobile-link">Pneus</a>
-            <a href="produtos/lubrificantes.html" class="mobile-link">Lubrificantes</a>
-            <a href="produtos/pastilhas.html" class="mobile-link">Pastilhas</a>
-          </div>
-        </div>
-        
-        <a href="#contato" class="mobile-link">Contato</a>
-      </nav>
+<nav class="menu-mobile">
+  <a href="#inicio" class="mobile-link">Início</a>
+  
+  <!-- Item com Submenu -->
+  <div class="menu-mobile-item">
+    <button class="menu-mobile-btn" aria-expanded="false">
+      Produtos <span style="display: inline-block; transition: transform 0.3s">▾</span>
+    </button>
+    <div class="submenu-mobile">
+      <a href="produtos/pneus.html" class="mobile-link">Pneus</a>
+      <a href="produtos/lubrificantes.html" class="mobile-link">Lubrificantes</a>
+      <a href="produtos/pastilhas.html" class="mobile-link">Pastilhas</a>
+    </div>
+  </div>
+  
+  <a href="#contato" class="mobile-link">Contato</a>
+</nav>
       
       <!-- Menu Desktop -->
       <nav class="menu-desktop" aria-label="Navegação principal">
