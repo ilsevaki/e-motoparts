@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>E-motoparts</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Fonte moderna -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,38 +14,39 @@
     <img src="whatsapp.png" alt="WhatsApp" />
   </a>
 
-  <!-- Botão Voltar ao Topo -->
-  <div class="back-to-top" onclick="scrollToTop()">↑</div>
+  <!-- Botão de voltar ao topo -->
+  <div class="back-to-top" onclick="scrollToTop()">⬆</div>
 
   <header>
-    <!-- Logo -->
     <div class="logo">
       <img src="logo.png" alt="E-motoparts">
     </div>
-
-    <!-- Menu -->
     <nav class="menu">
       <a href="#inicio">Início</a>
       <a href="#sobre">Sobre</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#contato">Contato</a>
-    </nav>
 
-    <!-- Carrinho no topo -->
-    <div class="cart-icon">
+      <div class="dropdown">
+        <a href="#produtos">Produtos ▾</a>
+        <div class="dropdown-content">
+          <a href="produtos/pneus.html">Pneus</a>
+          <a href="produtos/lubrificantes.html">Lubrificantes</a>
+          <a href="produtos/pastilhas.html">Pastilhas</a>
+        </div>
+      </div>
+
+      <a href="#contato">Contato</a>
       <a href="#carrinho">
-        <img src="cart.png" alt="Carrinho de Compras" />
+        <img src="cart.png" alt="Carrinho" class="cart-icon" />
       </a>
-    </div>
+    </nav>
   </header>
 
   <main>
     <section class="destaque" id="inicio">
       <h1>Bem-vindo à E-motoparts</h1>
       <p>Sua loja online de motopeças com os melhores preços</p>
-
       <h2>Promoções!</h2>
-      <p>Escolha uma categoria de produtos no menu acima e veja os itens em promoção.</p>
+      <p>Escolha uma categoria de produtos no menu acima e veja os itens em promoções.</p>
     </section>
   </main>
 
@@ -55,6 +55,5 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
-
 </body>
 </html>
