@@ -44,7 +44,7 @@ header {
 }
 
 .dropdown {
-  position: center;
+  position: relative;
 }
 
 .dropdown-content {
