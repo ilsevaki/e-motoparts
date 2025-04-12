@@ -84,8 +84,8 @@ body {
 /* MENU HAMBÚRGUER - TRÊS BARRAS VISÍVEIS */
 .menu-hamburguer {
   display: none; /* Só aparece em mobile */
-  background: none;
-  border: none;
+  background: transparent;
+  border: 2px solid #fff;
   cursor: pointer;
   padding: 12px 10px;
   flex-direction: column;
