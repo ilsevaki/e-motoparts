@@ -72,7 +72,7 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
   display: block;
 }
 
@@ -253,8 +253,8 @@ body {
   margin-top: 20px;
 }
 
-/* ========== MODAL ========== */
-.modal {
+/* ========== MODAL DO CARRINHO ========== */
+#carrinho-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -265,13 +265,53 @@ body {
   z-index: 1002;
 }
 
-.modal-conteudo {
+#carrinho-modal .modal-conteudo {
   background: white;
   margin: 5% auto;
   padding: 20px;
   width: 80%;
   max-width: 600px;
   border-radius: 10px;
+}
+
+.fechar-modal {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ========== ITENS DO CARRINHO ========== */
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantidade-controle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantidade-controle button {
+  background: #f0f0f0;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-remover {
+  background: #ff4444;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* ========== NOTIFICAÇÕES ========== */
