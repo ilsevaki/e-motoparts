@@ -110,79 +110,70 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ========== MENU MOBILE ========== */
-.menu-mobile {
-  display: none;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  background: #111;
-  padding: 20px 0;
-  z-index: 999;
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
-}
+/* ========== MENU MOBILE CORRIGIDO ========== */
+@media (max-width: 768px) {
+  .menu-mobile {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #111;
+    z-index: 999;
+    padding: 0;
+  }
 
-.menu-mobile.active {
-  display: block;
-}
+  .menu-mobile.active {
+    display: block;
+    padding: 10px 0;
+  }
 
-.menu-mobile a {
-  display: block;
-  color: white;
-  padding: 12px 20px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid #333;
-}
+  .dropdown-mobile {
+    position: relative;
+    border-bottom: 1px solid #333;
+  }
 
-.dropdown-mobile {
-  position: relative;
-}
+  .dropdown-btn {
+    width: 100%;
+    padding: 12px 25px;
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
 
-.dropdown-btn {
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
+  .submenu-mobile {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: #1a1a1a;
+  }
 
-.submenu-mobile {
-  display: none;
-  background: #222;
-  padding-left: 15px;
-}
+  .dropdown-mobile.active .submenu-mobile {
+    max-height: 500px;
+  }
 
-.submenu-mobile a {
-  padding: 10px 15px;
-  display: block;
-  color: #ddd;
-  text-decoration: none;
-}
+  .submenu-mobile a {
+    display: block;
+    padding: 10px 35px;
+    color: #ddd;
+    text-decoration: none;
+    border-bottom: 1px solid #2a2a2a;
+  }
 
-.submenu-mobile a:hover {
-  background: #333;
-}
+  .seta {
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
 
-.dropdown-mobile.active .submenu-mobile {
-  display: block;
-}
-
-.seta {
-  transition: transform 0.3s ease;
-}
-
-.dropdown-mobile.active .seta {
-  transform: rotate(180deg);
+  .dropdown-mobile.active .seta {
+    transform: rotate(180deg);
+  }
 }
 
 /* ========== ÍCONES ========== */
