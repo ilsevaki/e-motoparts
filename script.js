@@ -60,15 +60,49 @@ function salvarCarrinho() {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
-// Menu Hamburguer
-function toggleMenu() {
-  const hamburguer = document.querySelector('.menu-hamburguer');
-  const menuMobile = document.querySelector('.menu-mobile');
-  
-  hamburguer.classList.toggle('active');
-  menuMobile.classList.toggle('active');
-}
 
+// Menu Hamburguer
+const menuHamburguer = document.querySelector('.menu-hamburguer');
+const menuMobile = document.querySelector('.menu-mobile');
+
+menuHamburguer.addEventListener('click', function() {
+  this.classList.toggle('active');
+  menuMobile.classList.toggle('active');
+  
+  // Fecha todos os dropdowns ao abrir/fechar o menu
+  document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+    dropdown.classList.remove('active');
+  });
+});
+
+// Dropdown Mobile
+document.querySelectorAll('.dropdown-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const parent = this.parentElement;
+    
+    // Fecha outros dropdowns abertos
+    document.querySelectorAll('.dropdown-mobile').forEach(item => {
+      if (item !== parent) {
+        item.classList.remove('active');
+      }
+    });
+    
+    // Abre/fecha o dropdown clicado
+    parent.classList.toggle('active');
+  });
+});
+
+// Fecha o menu ao clicar fora
+document.addEventListener('click', function(e) {
+  if (!menuMobile.contains(e.target) && !menuHamburguer.contains(e.target)) {
+    menuMobile.classList.remove('active');
+    menuHamburguer.classList.remove('active');
+    document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+      dropdown.classList.remove('active');
+    });
+  }
+});
 // Carrossel
 let currentSlide = 0;
 const slides = document.querySelector('.carrossel-container');
