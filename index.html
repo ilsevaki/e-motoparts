@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-motoparts</title>
+  <meta name="description" content="Loja online de peças para motos com os melhores preços">
+  <title>E-motoparts - Peças para Motos</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
   <!-- WhatsApp flutuante -->
-  <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
-    <img src="whatsapp.png" alt="WhatsApp">
+  <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat no WhatsApp">
+    <img src="whatsapp.png" alt="" aria-hidden="true">
   </a>
 
   <header class="topo">
@@ -19,41 +21,43 @@
       
       <!-- Logo -->
       <div class="logo">
-        <img src="logo.png" alt="E-motoparts">
+        <a href="#inicio" aria-label="Página inicial">
+          <img src="logo.png" alt="E-motoparts" width="150" height="50">
+        </a>
       </div>
 
       <!-- Menu Hamburguer -->
-      <button class="menu-hamburguer" aria-label="Menu">
+      <button class="menu-hamburguer" aria-label="Menu" aria-expanded="false" aria-controls="menu-mobile">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
 
       <!-- Menu Desktop -->
-      <nav class="menu-desktop">
+      <nav class="menu-desktop" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <div class="dropdown">
-          <a href="#produtos">Produtos ▾</a>
-          <div class="dropdown-content">
-            <a href="produtos/pneus.html">Pneus</a>
-            <a href="produtos/lubrificantes.html">Lubrificantes</a>
-            <a href="produtos/pastilhas.html">Pastilhas</a>
+          <a href="#produtos" aria-haspopup="true" aria-expanded="false">Produtos ▾</a>
+          <div class="dropdown-content" role="menu">
+            <a href="produtos/pneus.html" role="menuitem">Pneus</a>
+            <a href="produtos/lubrificantes.html" role="menuitem">Lubrificantes</a>
+            <a href="produtos/pastilhas.html" role="menuitem">Pastilhas</a>
           </div>
         </div>
         <a href="#contato">Contato</a>
       </nav>
 
       <!-- Menu Mobile -->
-      <nav class="menu-mobile">
+      <nav class="menu-mobile" id="menu-mobile" aria-label="Navegação mobile">
         <a href="#inicio">Início</a>
         <div class="dropdown-mobile">
-          <button class="dropdown-btn">
-            Produtos <span class="seta">▾</span>
+          <button class="dropdown-btn" aria-expanded="false" aria-controls="submenu-mobile">
+            Produtos <span class="seta" aria-hidden="true">▾</span>
           </button>
-          <div class="submenu-mobile">
-            <a href="produtos/pneus.html">Pneus</a>
-            <a href="produtos/lubrificantes.html">Lubrificantes</a>
-            <a href="produtos/pastilhas.html">Pastilhas</a>
+          <div class="submenu-mobile" id="submenu-mobile" role="menu">
+            <a href="produtos/pneus.html" role="menuitem">Pneus</a>
+            <a href="produtos/lubrificantes.html" role="menuitem">Lubrificantes</a>
+            <a href="produtos/pastilhas.html" role="menuitem">Pastilhas</a>
           </div>
         </div>
         <a href="#contato">Contato</a>
@@ -61,15 +65,15 @@
 
       <!-- Ícones -->
       <div class="icons">
-        <a href="#favoritos" title="Favoritos">
-          <img src="favorito.png" alt="Favoritos">
+        <a href="#favoritos" title="Favoritos" aria-label="Favoritos">
+          <img src="favorito.png" alt="">
         </a>
-        <a href="#perfil" title="Perfil">
-          <img src="usuario.png" alt="Perfil">
+        <a href="#perfil" title="Perfil" aria-label="Perfil">
+          <img src="usuario.png" alt="">
         </a>
-        <a href="#carrinho" title="Carrinho" id="abrir-carrinho">
-          <img src="cart.png" alt="Carrinho">
-          <span class="cart-count"></span>
+        <a href="#carrinho" title="Carrinho" id="abrir-carrinho" aria-label="Carrinho">
+          <img src="cart.png" alt="">
+          <span class="cart-count" aria-live="polite"></span>
         </a>
       </div>
     </div>
@@ -83,46 +87,46 @@
     </section>
 
     <!-- Carrossel de Produtos -->
-    <section class="carrossel">
-      <h2>Produtos em Destaque</h2>
+    <section class="carrossel" aria-labelledby="destaque-titulo">
+      <h2 id="destaque-titulo">Produtos em Destaque</h2>
       <div class="carrossel-container">
-        <div class="carrossel-item">
-          <img src="produtos/pneu1.jpg" alt="Pneu Dianteiro">
+        <div class="carrossel-item" role="group" aria-label="Produto">
+          <img src="produtos/pneu1.jpg" alt="Pneu Dianteiro para moto" width="300" height="200">
           <h3>Pneu Dianteiro</h3>
           <p>R$ 249,90</p>
           <button onclick="adicionarAoCarrinho('Pneu Dianteiro', 249.90, 'pneu1')">Adicionar ao Carrinho</button>
         </div>
-        <div class="carrossel-item">
-          <img src="produtos/lubrificante1.jpg" alt="Óleo 20W50">
+        <div class="carrossel-item" role="group" aria-label="Produto">
+          <img src="produtos/lubrificante1.jpg" alt="Óleo 20W50 para moto" width="300" height="200">
           <h3>Óleo 20W50</h3>
           <p>R$ 39,90</p>
           <button onclick="adicionarAoCarrinho('Óleo 20W50', 39.90, 'lub1')">Adicionar ao Carrinho</button>
         </div>
-        <div class="carrossel-item">
-          <img src="produtos/pastilha1.jpg" alt="Pastilha de Freio">
+        <div class="carrossel-item" role="group" aria-label="Produto">
+          <img src="produtos/pastilha1.jpg" alt="Pastilha de Freio para moto" width="300" height="200">
           <h3>Pastilha de Freio</h3>
           <p>R$ 89,90</p>
           <button onclick="adicionarAoCarrinho('Pastilha de Freio', 89.90, 'past1')">Adicionar ao Carrinho</button>
         </div>
       </div>
       <div class="carrossel-controles">
-        <button class="carrossel-anterior">❮</button>
-        <button class="carrossel-proximo">❯</button>
+        <button class="carrossel-anterior" aria-label="Produto anterior">❮</button>
+        <button class="carrossel-proximo" aria-label="Próximo produto">❯</button>
       </div>
     </section>
 
     <!-- Modal do Carrinho -->
-    <div id="carrinho-modal" class="modal">
+    <div id="carrinho-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
       <div class="modal-conteudo">
-        <span class="fechar-modal">&times;</span>
-        <h2>Seu Carrinho</h2>
-        <ul id="itens-carrinho"></ul>
-        <div id="total">Total: R$ 0,00</div>
+        <button class="fechar-modal" aria-label="Fechar">&times;</button>
+        <h2 id="modal-titulo">Seu Carrinho</h2>
+        <ul id="itens-carrinho" role="list"></ul>
+        <div id="total" aria-live="polite">Total: R$ 0,00</div>
         <button id="finalizar-compra">Finalizar Compra</button>
       </div>
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
