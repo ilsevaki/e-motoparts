@@ -296,6 +296,7 @@ body {
   width: 28px;
   height: 28px;
   object-fit: contain;
+  display: block;
 }
 
 .whatsapp-float:hover {
