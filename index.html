@@ -15,51 +15,34 @@
   </a>
 
   <header class="topo">
-    <div class="container-header">
-      
-      <!-- Logo - Corrigido para não distorcer -->
-      <div class="logo">
-        <img src="logo.png" alt="E-motoparts" class="logo-img">
+  <div class="container-header">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <img src="logo.png" alt="E-motoparts">
+    </div>
+
+    <!-- Menu Hamburguer (só visível em mobile) -->
+    <button class="menu-hamburguer" aria-label="Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Menu Principal (único) -->
+    <nav class="menu-principal">
+      <a href="#inicio">Início</a>
+      <div class="dropdown">
+        <a href="#produtos">Produtos ▾</a>
+        <div class="dropdown-content">
+          <a href="produtos/pneus.html">Pneus</a>
+          <a href="produtos/lubrificantes.html">Lubrificantes</a>
+          <a href="produtos/pastilhas.html">Pastilhas</a>
+        </div>
       </div>
-
-      <!-- Menu Hamburguer -->
-      <button class="menu-hamburguer" aria-label="Menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-
-      <!-- Menu Desktop -->
-      <nav class="menu-desktop">
-        <a href="#inicio">Início</a>
-        <div class="dropdown">
-          <a href="#produtos">Produtos ▾</a>
-          <div class="dropdown-content">
-            <a href="produtos/pneus.html">Pneus</a>
-            <a href="produtos/lubrificantes.html">Lubrificantes</a>
-            <a href="produtos/pastilhas.html">Pastilhas</a>
-          </div>
-        </div>
-        <a href="#contato">Contato</a>
-      </nav>
-
-      <!-- Menu Mobile - Corrigido -->
-      <nav class="menu-mobile">
-        <a href="#inicio">Início</a>
-        <div class="dropdown-mobile">
-          <button class="dropdown-btn">
-            Produtos <span class="seta">▾</span>
-          </button>
-          <div class="submenu-mobile">
-            <a href="produtos/pneus.html">Pneus</a>
-            <a href="produtos/lubrificantes.html">Lubrificantes</a>
-            <a href="produtos/pastilhas.html">Pastilhas</a>
-          </div>
-        </div>
-        <a href="#contato">Contato</a>
-      </nav>
-
-      <!-- Ícones -->
+      <a href="#contato">Contato</a>
+      
+      <!-- Ícones (agora dentro do menu) -->
       <div class="icons">
         <a href="#favoritos" title="Favoritos">
           <img src="favorito.png" alt="Favoritos">
@@ -72,8 +55,9 @@
           <span class="cart-count"></span>
         </a>
       </div>
-    </div>
-  </header>
+    </nav>
+  </div>
+</header>
 
   <main>
     <!-- Seção Destaque -->
