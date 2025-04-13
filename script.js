@@ -1,5 +1,11 @@
 // Carrinho de compras
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+let carrinho;
+try {
+  carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+} catch {
+  carrinho = [];
+  localStorage.removeItem('carrinho');
+}
 
 // Elementos DOM
 const elementos = {
@@ -31,7 +37,12 @@ function atualizarCarrinho() {
     const li = document.createElement("li");
     li.className = "item-carrinho";
     li.innerHTML = `
-      <span>${item.produto} (${item.quantidade}x)</span>
+      <span>${item.produto}</span>
+      <div class="quantidade-controle">
+        <button onclick="alterarQuantidade('${item.id}', -1)">−</button>
+        <span>${item.quantidade}x</span>
+        <button onclick="alterarQuantidade('${item.id}', 1)">+</button>
+      </div>
       <span>R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
       <button class="btn-remover" onclick="removerItemCompletamente('${item.id}')">×</button>
     `;
@@ -40,6 +51,15 @@ function atualizarCarrinho() {
   });
 
   elementos.totalElement.innerHTML = `Total: R$ ${soma.toFixed(2)}`;
+}
+
+function alterarQuantidade(id, delta) {
+  const item = carrinho.find(item => item.id === id);
+  if (item) {
+    item.quantidade = Math.max(1, item.quantidade + delta);
+    salvarCarrinho();
+    atualizarCarrinho();
+  }
 }
 
 function adicionarAoCarrinho(produto, preco, idProduto) {
@@ -94,6 +114,10 @@ elementos.dropdowns.forEach(dropdown => {
   link.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
       e.preventDefault();
+      // Fecha outros dropdowns antes de abrir o atual
+      elementos.dropdowns.forEach(d => {
+        if (d !== dropdown) d.classList.remove('active');
+      });
       dropdown.classList.toggle('active');
     }
   });
@@ -119,7 +143,7 @@ const totalSlides = document.querySelectorAll('.carrossel-item').length;
 function moveSlide(direction) {
   currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
   if (elementos.slides) {
-    elementos.slides.style.transform = `translateX(-${currentSlide * 320}px)`;
+    elementos.slides.style.transform = `translateX(-${currentSlide * (300 + 20)}px)`;
   }
 }
 
@@ -131,8 +155,17 @@ function toggleCarrinho() {
   }
 }
 
+// Fechar modal ao clicar fora
+elementos.modalCarrinho?.addEventListener('click', function(e) {
+  if (e.target === this) toggleCarrinho();
+});
+
 // Notificação
+let notificacaoAtiva = false;
+
 function mostrarNotificacao(mensagem) {
+  if (notificacaoAtiva) return;
+  notificacaoAtiva = true;
   const notificacao = document.createElement("div");
   notificacao.className = "notificacao";
   notificacao.textContent = mensagem;
@@ -140,7 +173,10 @@ function mostrarNotificacao(mensagem) {
   
   setTimeout(() => {
     notificacao.classList.add("fade-out");
-    setTimeout(() => notificacao.remove(), 500);
+    setTimeout(() => {
+      notificacao.remove();
+      notificacaoAtiva = false;
+    }, 500);
   }, 3000);
 }
 
