@@ -1,7 +1,7 @@
 // Carrinho de compras
 let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-// Função para atualizar o carrinho
+// Funções do carrinho
 function atualizarCarrinho() {
   const lista = document.getElementById("itens-carrinho");
   const totalElement = document.getElementById("total");
@@ -25,27 +25,17 @@ function atualizarCarrinho() {
     const li = document.createElement("li");
     li.className = "item-carrinho";
     li.innerHTML = `
-      <span class="nome-produto">${item.produto}</span>
-      <div class="controles-quantidade">
-        <button class="btn-quantidade" onclick="removerDoCarrinho('${item.id}')">−</button>
-        <span class="quantidade">${item.quantidade}</span>
-        <button class="btn-quantidade" onclick="adicionarAoCarrinho('${item.produto}', ${item.preco}, '${item.id}')">+</button>
-      </div>
-      <span class="preco">R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
-      <button class="btn-remover" onclick="removerItemCompletamente('${item.id}')">×</button>
+      <span>${item.produto} (${item.quantidade}x)</span>
+      <span>R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
+      <button onclick="removerItemCompletamente('${item.id}')">Remover</button>
     `;
     lista.appendChild(li);
     soma += item.preco * item.quantidade;
   });
 
-  // Atualiza total
-  totalElement.innerHTML = `
-    <span>Total:</span>
-    <span class="valor-total">R$ ${soma.toFixed(2)}</span>
-  `;
+  totalElement.innerHTML = `Total: R$ ${soma.toFixed(2)}`;
 }
 
-// Funções do carrinho
 function adicionarAoCarrinho(produto, preco, idProduto) {
   const itemExistente = carrinho.find(item => item.id === idProduto);
   
@@ -58,20 +48,6 @@ function adicionarAoCarrinho(produto, preco, idProduto) {
   salvarCarrinho();
   atualizarCarrinho();
   mostrarNotificacao(`${produto} adicionado ao carrinho!`);
-}
-
-function removerDoCarrinho(idProduto) {
-  const index = carrinho.findIndex(item => item.id === idProduto);
-  
-  if (index !== -1) {
-    if (carrinho[index].quantidade > 1) {
-      carrinho[index].quantidade -= 1;
-    } else {
-      carrinho.splice(index, 1);
-    }
-    salvarCarrinho();
-    atualizarCarrinho();
-  }
 }
 
 function removerItemCompletamente(idProduto) {
@@ -93,6 +69,22 @@ function toggleMenu() {
   menuMobile.classList.toggle('active');
 }
 
+// Carrossel
+let currentSlide = 0;
+const slides = document.querySelector('.carrossel-container');
+const totalSlides = document.querySelectorAll('.carrossel-item').length;
+
+function moveSlide(direction) {
+  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+  slides.style.transform = `translateX(-${currentSlide * 320}px)`;
+}
+
+// Modal do Carrinho
+function toggleCarrinho() {
+  const modal = document.getElementById("carrinho-modal");
+  modal.style.display = modal.style.display === "block" ? "none" : "block";
+}
+
 // Notificação
 function mostrarNotificacao(mensagem) {
   const notificacao = document.createElement("div");
@@ -110,13 +102,24 @@ function mostrarNotificacao(mensagem) {
 document.addEventListener('DOMContentLoaded', () => {
   atualizarCarrinho();
   
-  // Eventos do menu
+  // Menu
   document.querySelector('.menu-hamburguer')?.addEventListener('click', toggleMenu);
   
-  // Eventos do dropdown mobile
+  // Dropdown mobile
   document.querySelector('.dropdown-btn')?.addEventListener('click', function(e) {
     e.preventDefault();
     this.classList.toggle('active');
     this.nextElementSibling.classList.toggle('active');
+  });
+
+  // Carrossel
+  document.querySelector('.carrossel-anterior')?.addEventListener('click', () => moveSlide(-1));
+  document.querySelector('.carrossel-proximo')?.addEventListener('click', () => moveSlide(1));
+
+  // Carrinho
+  document.getElementById('abrir-carrinho')?.addEventListener('click', toggleCarrinho);
+  document.querySelector('.fechar-modal')?.addEventListener('click', toggleCarrinho);
+  document.getElementById('finalizar-compra')?.addEventListener('click', () => {
+    alert('Compra finalizada! Redirecionando para o pagamento...');
   });
 });
