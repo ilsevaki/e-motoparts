@@ -225,20 +225,36 @@ body {
   height: 24px;
 }
 
+/* ===== CONTADOR DO CARRINHO ===== */
 .cart-count {
   position: absolute;
   top: -5px;
-  right: -8px;
-  background: #ff5722;
+  right: -5px;
+  background: #ff0000; /* Vermelho vivo */
   color: white;
   border-radius: 50%;
   width: 18px;
   height: 18px;
   font-size: 10px;
-  display: flex;
+  display: none; /* Começa escondido */
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  border: 1px solid #fff; /* Borda branca para contraste */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  animation: pulse 0.5s ease; /* Efeito de pulsar ao aparecer */
+}
+
+/* Mostra apenas quando tem itens */
+.cart-count:not(:empty) {
+  display: flex;
+}
+
+/* Efeito de pulsação */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* ========== CONTEÚDO PRINCIPAL ========== */
