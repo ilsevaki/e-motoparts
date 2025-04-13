@@ -233,6 +233,9 @@ body {
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .carrossel-item img {
@@ -240,6 +243,36 @@ body {
   height: 200px;
   object-fit: cover;
   border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.carrossel-item h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.carrossel-item p {
+  color: #e63946;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.carrossel-item button {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Poppins';
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.carrossel-item button:hover {
+  background: #e64a19;
+  transform: translateY(-2px);
 }
 
 .carrossel-controles {
@@ -270,7 +303,7 @@ body {
   border-radius: 10px;
 }
 
-/* ========== BOTÃO WHATSAPP (VERSÃO FINAL) ========== */
+/* ========== BOTÃO WHATSAPP (VERSÃO CORRIGIDA) ========== */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -282,22 +315,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
   z-index: 1001;
-  transition: all 0.3s ease;
-  padding: 12px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 14px;
 }
 
 .whatsapp-float img {
-  width: 100%;
-  height: auto;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  filter: hue-rotate(130deg) brightness(0.9);
 }
 
 .whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background-color: #25D366;
+}
+
+.whatsapp-float:hover img {
+  filter: brightness(0) invert(1);
 }
 
 /* ========== DESTAQUE ========== */
@@ -324,12 +361,13 @@ body {
   }
 
   .whatsapp-float {
-    width: 52px;
-    height: 52px;
-    padding: 10px;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
   }
-
-  .menu-mobile {
-    max-height: calc(100vh - 80px);
+  
+  .whatsapp-float img {
+    width: 26px;
+    height: 26px;
   }
 }
