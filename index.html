@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-motoparts</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Ícone do WhatsApp flutuante -->
   <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
-    <img src="whatsapp.png" alt="WhatsApp" />
+    <img src="whatsapp.png" alt="WhatsApp">
   </a>
 
   <header class="topo">
     <div class="container-header">
       
-      <!-- Logo centralizado -->
+      <!-- Logo -->
       <div class="logo">
         <img src="logo.png" alt="E-motoparts">
       </div>
 
-      <!-- Menu Hambúrguer (Mobile) -->
+      <!-- Menu Hamburguer -->
       <button class="menu-hamburguer" aria-label="Menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -47,8 +47,10 @@
       <nav class="menu-mobile">
         <a href="#inicio">Início</a>
         <div class="dropdown-mobile">
-          <button class="dropdown">Produtos ▾</button>
-          <div class="dropdown-content">
+          <button class="dropdown-btn">
+            Produtos <span class="seta">▾</span>
+          </button>
+          <div class="submenu-mobile">
             <a href="produtos/pneus.html">Pneus</a>
             <a href="produtos/lubrificantes.html">Lubrificantes</a>
             <a href="produtos/pastilhas.html">Pastilhas</a>
@@ -63,10 +65,11 @@
           <img src="favorito.png" alt="Favoritos">
         </a>
         <a href="#perfil" title="Perfil">
-          <img src="usuário.png" alt="Perfil">
+          <img src="usuario.png" alt="Perfil">
         </a>
         <a href="#carrinho" title="Carrinho">
-          <img src="cart.png" alt="Carrinho" class="cart-icon" />
+          <img src="cart.png" alt="Carrinho" class="cart-icon">
+          <span class="cart-count">0</span>
         </a>
       </div>
     </div>
@@ -81,6 +84,37 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    // Menu Hamburguer
+    const hamburguer = document.querySelector('.menu-hamburguer');
+    const menuMobile = document.querySelector('.menu-mobile');
+    
+    if (hamburguer && menuMobile) {
+      hamburguer.addEventListener('click', () => {
+        hamburguer.classList.toggle('active');
+        menuMobile.classList.toggle('active');
+      });
+
+      // Dropdown Mobile
+      const dropdownBtn = document.querySelector('.dropdown-btn');
+      if (dropdownBtn) {
+        dropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const submenu = e.currentTarget.nextElementSibling;
+          submenu.classList.toggle('active');
+          e.currentTarget.classList.toggle('active');
+        });
+      }
+
+      // Fechar menu ao clicar em links
+      const mobileLinks = document.querySelectorAll('.menu-mobile a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburguer.classList.remove('active');
+          menuMobile.classList.remove('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
