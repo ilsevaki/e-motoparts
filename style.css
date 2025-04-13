@@ -37,7 +37,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ========== MENU ========== */
+/* ========== MENU DESKTOP ========== */
 .menu-desktop {
   display: flex;
   gap: 20px;
@@ -110,7 +110,7 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ========== MENU MOBILE ========== */
+/* ========== MENU MOBILE - CORRIGIDO ========== */
 .menu-mobile {
   display: none;
   position: fixed;
@@ -118,31 +118,84 @@ body {
   left: 0;
   width: 100%;
   background: #111;
-  padding: 20px 0;
+  padding: 0;
   z-index: 999;
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .menu-mobile.active {
   display: block;
+  max-height: 500px;
+  padding: 20px 0;
 }
 
 .menu-mobile a {
   display: block;
   color: white;
-  padding: 12px 20px;
+  padding: 12px 25px;
   text-decoration: none;
   transition: all 0.3s ease;
   border-bottom: 1px solid #333;
 }
 
-/* ========== CARRINHO ========== */
-.icons {
+.dropdown-mobile {
   position: relative;
+}
+
+.dropdown-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+}
+
+.submenu-mobile {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #222;
+}
+
+.dropdown-mobile.active .submenu-mobile {
+  max-height: 300px;
+}
+
+.submenu-mobile a {
+  padding: 10px 35px;
+  color: #ddd;
+  border-bottom: 1px solid #444;
+}
+
+.seta {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-mobile.active .seta {
+  transform: rotate(180deg);
+}
+
+/* ========== ÍCONES ========== */
+.icons {
   display: flex;
   gap: 15px;
   align-items: center;
+  position: relative;
+}
+
+.icons a {
+  position: relative;
+  display: flex;
 }
 
 .cart-count {
@@ -222,36 +275,41 @@ body {
   border-radius: 10px;
 }
 
-/* ========== BOTÃO WHATSAPP ========== */
+/* ========== BOTÃO WHATSAPP - CORRIGIDO ========== */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background-color: #25D366;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1001;
   transition: all 0.3s ease;
 }
 
-.whatsapp-float::before {
-  content: "";
-  display: block;
-  width: 36px;
-  height: 36px;
-  background-image: url('whatsapp.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+.whatsapp-float img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
   background-color: #128C7E;
+}
+
+/* ========== DESTAQUE ========== */
+.destaque {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('bg-destaque.jpg');
+  background-size: cover;
+  color: white;
 }
 
 /* ========== RESPONSIVO ========== */
@@ -269,14 +327,14 @@ body {
   }
 
   .whatsapp-float {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     bottom: 15px;
     right: 15px;
   }
-
-  .whatsapp-float::before {
-    width: 30px;
-    height: 30px;
+  
+  .whatsapp-float img {
+    width: 24px;
+    height: 24px;
   }
 }
