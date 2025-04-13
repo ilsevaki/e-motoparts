@@ -1,22 +1,32 @@
+/* ========== VARIÁVEIS ========== */
+:root {
+  --cor-primaria: #ff5722;
+  --cor-secundaria: #25D366;
+  --cor-fundo: #f8f8f8;
+  --cor-texto: #333;
+  --cor-header: #111;
+  --sombra: 0 2px 10px rgba(0,0,0,0.1);
+}
+
 /* ========== ESTILOS GERAIS ========== */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: #f8f8f8;
-  color: #333;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
   line-height: 1.6;
 }
 
 /* ========== CABEÇALHO ========== */
 .topo {
-  background: #111;
+  background: var(--cor-header);
   color: white;
   padding: 15px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: var(--sombra);
 }
 
 .container-header {
@@ -37,10 +47,10 @@ body {
   transform: scale(1.05);
 }
 
-/* ========== MENU ========== */
+/* ========== MENU DESKTOP ========== */
 .menu-desktop {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   align-items: center;
 }
 
@@ -53,7 +63,7 @@ body {
 }
 
 .menu-desktop a:hover {
-  background: #ff5722;
+  background: var(--cor-primaria);
 }
 
 .dropdown {
@@ -64,12 +74,12 @@ body {
   display: none;
   position: absolute;
   background: #222;
-  min-width: 160px;
+  min-width: 180px;
   top: 100%;
   left: 0;
-  z-index: 1;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 10;
+  border-radius: 0 0 4px 4px;
+  animation: fadeIn 0.3s;
 }
 
 .dropdown:hover .dropdown-content {
@@ -110,29 +120,36 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ========== MENU MOBILE CORRIGIDO ========== */
+/* ========== MENU MOBILE ========== */
 @media (max-width: 768px) {
+  .menu-desktop {
+    display: none;
+  }
+  
+  .menu-hamburguer {
+    display: flex;
+  }
+  
   .menu-mobile {
     display: none;
     position: fixed;
     top: 80px;
     left: 0;
     width: 100%;
-    background: #111;
-    z-index: 999;
+    background: var(--cor-header);
     padding: 0;
+    z-index: 999;
   }
-
+  
   .menu-mobile.active {
     display: block;
     padding: 10px 0;
   }
-
+  
   .dropdown-mobile {
-    position: relative;
     border-bottom: 1px solid #333;
   }
-
+  
   .dropdown-btn {
     width: 100%;
     padding: 12px 25px;
@@ -146,18 +163,18 @@ body {
     align-items: center;
     cursor: pointer;
   }
-
+  
   .submenu-mobile {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
     background: #1a1a1a;
   }
-
+  
   .dropdown-mobile.active .submenu-mobile {
     max-height: 500px;
   }
-
+  
   .submenu-mobile a {
     display: block;
     padding: 10px 35px;
@@ -165,12 +182,11 @@ body {
     text-decoration: none;
     border-bottom: 1px solid #2a2a2a;
   }
-
+  
   .seta {
     transition: transform 0.3s ease;
-    display: inline-block;
   }
-
+  
   .dropdown-mobile.active .seta {
     transform: rotate(180deg);
   }
@@ -249,7 +265,7 @@ body {
 }
 
 .carrossel-item button {
-  background: #ff5722;
+  background: var(--cor-primaria);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -294,34 +310,33 @@ body {
   border-radius: 10px;
 }
 
-/* ========== BOTÃO WHATSAPP (VERSÃO CORRIGIDA) ========== */
+/* ========== BOTÃO WHATSAPP ========== */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 56px;
-  height: 56px;
-  background-color: white;
+  width: 60px;
+  height: 60px;
+  background: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
   z-index: 1001;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  padding: 14px;
+  transition: all 0.3s;
 }
 
 .whatsapp-float img {
-  width: 80px;
-  height: 80px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+  transition: all 0.3s;
 }
 
 .whatsapp-float:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  background-color: #25D366;
+  transform: scale(1.1);
+  background: var(--cor-secundaria);
 }
 
 .whatsapp-float:hover img {
@@ -337,16 +352,14 @@ body {
   color: white;
 }
 
+/* ========== ANIMAÇÕES ========== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ========== RESPONSIVO ========== */
 @media (max-width: 768px) {
-  .menu-desktop {
-    display: none;
-  }
-  
-  .menu-hamburguer {
-    display: flex;
-  }
-  
   .carrossel-item {
     min-width: 250px;
   }
@@ -354,11 +367,10 @@ body {
   .whatsapp-float {
     width: 50px;
     height: 50px;
-    padding: 12px;
   }
   
   .whatsapp-float img {
-    width: 80px;
-    height: 80px;
+    width: 26px;
+    height: 26px;
   }
 }
