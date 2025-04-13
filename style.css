@@ -28,8 +28,7 @@ body {
   padding: 0 20px;
 }
 
-/* Logo corrigido - não distorce mais */
-.logo-img {
+.logo img {
   height: auto;
   max-height: 50px;
   width: auto;
@@ -37,18 +36,26 @@ body {
   display: block;
 }
 
-/* ========== MENU PRINCIPAL ========== */
+/* ========== MENU PRINCIPAL (ÚNICO) ========== */
 .menu-principal {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* Desktop (default) */
-.menu-hamburguer {
-  display: none;
+.menu-principal a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
+.menu-principal a:hover {
+  background: #ff5722;
+}
+
+/* Dropdown */
 .dropdown {
   position: relative;
 }
@@ -61,45 +68,36 @@ body {
   top: 100%;
   left: 0;
   z-index: 1;
+  border-radius: 0 0 4px 4px;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .menu-principal {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: #111;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 20px 0;
-    display: none;
-  }
-
-  .menu-principal.active {
-    display: flex;
-  }
-
-  .menu-hamburguer {
-    display: flex;
-  }
-
-  .dropdown-content {
-    position: static;
-    display: none;
-    background: #222;
-  }
-
-  .dropdown.active .dropdown-content {
-    display: block;
-  }
+/* Ícones dentro do menu */
+.icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff0000;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid #fff;
+}
 
 /* ========== MENU HAMBÚRGUER ========== */
 .menu-hamburguer {
@@ -135,252 +133,52 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ========== MENU MOBILE CORRIGIDO ========== */
+/* ========== RESPONSIVO ========== */
 @media (max-width: 768px) {
-  .menu-desktop {
-    display: none;
-  }
-  
-  .menu-hamburguer {
-    display: flex;
-  }
-  
-  .menu-mobile {
-    display: none;
+  /* Esconde o menu principal padrão */
+  .menu-principal {
     position: fixed;
     top: 80px;
     left: 0;
     width: 100%;
     background: #111;
-    z-index: 999;
-    padding: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 0;
+    display: none;
+    gap: 0;
   }
 
-  .menu-mobile.active {
-    display: block;
-    padding: 10px 0;
-  }
-
-  .dropdown-mobile {
-    position: relative;
-    border-bottom: 1px solid #333;
-  }
-
-  .dropdown-btn {
-    width: 100%;
-    padding: 12px 25px;
-    background: none;
-    border: none;
-    color: white;
-    font-family: 'Poppins';
-    font-size: 1rem;
+  .menu-principal.active {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
   }
 
-  .submenu-mobile {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background: #1a1a1a;
+  /* Mostra o hambúrguer */
+  .menu-hamburguer {
+    display: flex;
   }
 
-  .dropdown-mobile.active .submenu-mobile {
-    max-height: 1000px;
+  /* Ajusta dropdown para mobile */
+  .dropdown-content {
+    position: static;
+    display: none;
+    width: 100%;
+    border-radius: 0;
   }
 
-  .submenu-mobile a {
+  .dropdown.active .dropdown-content {
     display: block;
-    padding: 12px 35px;
-    color: #ddd;
-    text-decoration: none;
-    border-bottom: 1px solid #2a2a2a;
-    white-space: nowrap;
   }
 
-  .seta {
-    transition: transform 0.3s ease;
-    display: inline-block;
+  /* Ajusta ícones */
+  .icons {
+    justify-content: center;
+    padding: 15px 0 0;
+    margin-top: 15px;
+    border-top: 1px solid #333;
   }
 
-  .dropdown-mobile.active .seta {
-    transform: rotate(180deg);
-  }
-}
-
-/* ========== ÍCONES ========== */
-.icons {
-  position: relative;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #ff0000;
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border: 1px solid #fff;
-}
-
-/* ========== CARROSSEL ========== */
-.carrossel {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-.carrossel-container {
-  display: flex;
-  transition: transform 0.5s ease;
-  gap: 20px;
-}
-
-.carrossel-item {
-  min-width: 300px;
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.carrossel-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-
-.carrossel-item h3 {
-  margin-bottom: 8px;
-  font-size: 1.2rem;
-}
-
-.carrossel-item p {
-  color: #e63946;
-  font-weight: 600;
-  margin: 10px 0;
-}
-
-.carrossel-item button {
-  background: #ff5722;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: 'Poppins';
-  transition: all 0.3s;
-  width: 100%;
-  margin-top: 15px;
-}
-
-.carrossel-item button:hover {
-  background: #e64a19;
-  transform: translateY(-2px);
-}
-
-.carrossel-controles {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* ========== MODAL ========== */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 1002;
-}
-
-.modal-conteudo {
-  background: white;
-  margin: 5% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
-  border-radius: 10px;
-}
-
-/* ========== BOTÃO WHATSAPP CORRIGIDO ========== */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  z-index: 1001;
-  transition: all 0.3s;
-  padding: 15px;
-}
-
-.whatsapp-icon {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  background: #25D366;
-}
-
-.whatsapp-float:hover .whatsapp-icon {
-  filter: brightness(0) invert(1);
-}
-
-/* ========== DESTAQUE ========== */
-.destaque {
-  padding: 60px 20px;
-  text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('bg-destaque.jpg');
-  background-size: cover;
-  color: white;
-}
-
-.destaque h1 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
-}
-
-.destaque p {
-  font-size: 1.2rem;
-}
-
-/* ========== RESPONSIVO ========== */
-@media (max-width: 768px) {
+  /* Ajustes gerais */
   .carrossel-item {
     min-width: 250px;
   }
@@ -395,4 +193,63 @@ body {
     width: 26px;
     height: 26px;
   }
+}
+
+/* ========== BOTÃO WHATSAPP ========== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1001;
+  transition: all 0.3s;
+}
+
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: all 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background: #25D366;
+}
+
+.whatsapp-float:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* ========== SEÇÕES ========== */
+.destaque {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('bg-destaque.jpg');
+  background-size: cover;
+  color: white;
+}
+
+.carrossel {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1002;
 }
