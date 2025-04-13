@@ -5,9 +5,10 @@ body {
   padding: 0;
   background: #f8f8f8;
   color: #333;
+  line-height: 1.6;
 }
 
-/* CABEÇALHO PRETO */
+/* CABEÇALHO */
 .topo {
   background: #111;
   color: white;
@@ -30,6 +31,11 @@ body {
 /* LOGO */
 .logo img {
   height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
 }
 
 /* MENU DESKTOP */
@@ -43,7 +49,7 @@ body {
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 4px;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .menu-desktop a:hover {
@@ -81,62 +87,38 @@ body {
 }
 
 /* MENU HAMBÚRGUER */
-/* MENU HAMBÚRGUER - TRÊS BARRAS VISÍVEIS */
 .menu-hamburguer {
-  display: none; /* Só aparece em mobile */
+  display: none;
   background: transparent;
-  border: 2px solid #fff;
+  border: none;
   cursor: pointer;
-  padding: 12px 10px;
+  padding: 10px;
   flex-direction: column;
   justify-content: space-between;
   width: 32px;
   height: 24px;
-  position: relative;
-  z-index: 1001;
+  z-index: 1002;
 }
 
-/* No seu arquivo style.css */
-.menu-hamburguer {
-  background: transparent !important;
-  border: none !important; /* Remove borda quadrada */
-  padding: 10px !important;
-  outline: none !important; /* Remove contorno ao focar */
-}
-
-.menu-hamburguer:focus {
-  box-shadow: none !important; /* Remove sombra no clique */
-}
 .menu-hamburguer .bar {
   display: block;
   width: 100%;
   height: 3px;
-  background: #fff; /* Cor branca para contraste com header preto */
+  background: #fff;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-/* Estado ativo (X) */
 .menu-hamburguer.active .bar:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-  width: 100%;
+  transform: translateY(8px) rotate(45deg);
 }
 
 .menu-hamburguer.active .bar:nth-child(2) {
   opacity: 0;
-  transform: translateX(-20px);
 }
 
 .menu-hamburguer.active .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-  width: 100%;
-}
-
-/* RESPONSIVO - Mostrar apenas em mobile */
-@media (max-width: 768px) {
-  .menu-hamburguer {
-    display: flex;
-  }
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* MENU MOBILE */
@@ -147,25 +129,72 @@ body {
   left: 0;
   width: 100%;
   background: #111;
-  padding: 20px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  z-index: 999;
+  padding: 20px 0;
+  z-index: 1001;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 
 .menu-mobile a {
   display: block;
   color: white;
-  padding: 12px 0;
+  padding: 12px 20px;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.menu-mobile a:hover {
+  background: rgba(255, 87, 34, 0.1);
+  padding-left: 25px;
+}
+
+/* DROPDOWN MOBILE */
+.dropdown-mobile {
   border-bottom: 1px solid #333;
 }
 
-.dropdown-mobile .dropdown-content {
-  display: none;
-  padding-left: 15px;
+.dropdown-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ÍCONES BRANCOS */
+.dropdown-btn .seta {
+  transition: transform 0.3s;
+}
+
+.dropdown-btn.active .seta {
+  transform: rotate(180deg);
+}
+
+.submenu-mobile {
+  display: none;
+  background: rgba(0,0,0,0.2);
+}
+
+.submenu-mobile a {
+  padding-left: 30px;
+}
+
+.submenu-mobile.active {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ÍCONES */
 .icons {
   display: flex;
   align-items: center;
@@ -174,13 +203,13 @@ body {
 
 .icons a {
   display: inline-block;
-  filter: brightness(0) invert(1); /* Transforma ícones em branco */
+  filter: brightness(0) invert(1);
   transition: transform 0.2s ease;
+  position: relative;
 }
 
 .icons a:hover {
   transform: scale(1.1);
-  opacity: 0.8;
 }
 
 .icons img {
@@ -188,7 +217,6 @@ body {
   height: 24px;
 }
 
-/* Contador do carrinho */
 .cart-count {
   position: absolute;
   top: -5px;
@@ -215,12 +243,22 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+h1 {
+  color: #ff5722;
+  margin-bottom: 20px;
+}
+
 /* WHATSAPP FLUTUANTE */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
 }
 
 .whatsapp-float img {
@@ -242,43 +280,27 @@ body {
     display: block;
   }
   
-  .menu-hamburguer.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+  .container-header {
+    padding: 0 15px;
   }
   
-  .menu-hamburguer.active .bar:nth-child(2) {
-    opacity: 0;
+  .destaque {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .destaque {
+    padding: 25px 15px;
   }
   
-  .menu-hamburguer.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  .menu-mobile {
+    top: 70px;
+    max-height: calc(100vh - 70px);
   }
-}
-
-/* Estilo unificado para todos os itens */
-.dropdown-mobile button.dropdown-btn {
-  background: none;
-  border: none;
-  color: white; /* Cor igual aos outros links */
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  padding: 12px 0;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-/* Efeito hover igual aos outros links */
-.dropdown-mobile button.dropdown-btn:hover {
-  color: #ff5722; /* Laranja ao passar o mouse */
-}
-
-/* Seta do dropdown */
-.dropdown-mobile .seta {
-  transition: transform 0.3s;
-  margin-left: 8px;
+  
+  .whatsapp-float img {
+    width: 50px;
+    height: 50px;
+  }
 }
