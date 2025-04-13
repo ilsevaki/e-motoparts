@@ -8,56 +8,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- WhatsApp flutuante - Ícone corrigido -->
+  <!-- WhatsApp flutuante -->
   <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
     <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
   </a>
 
   <header class="topo">
-  <div class="container-header">
-    
-    <!-- Logo -->
-    <div class="logo">
-      <img src="logo.png" alt="E-motoparts">
-    </div>
+    <div class="container-header">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="logo.png" alt="E-motoparts">
+      </div>
 
-    <!-- Menu Hamburguer (só visível em mobile) -->
-    <button class="menu-hamburguer" aria-label="Menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
+      <!-- Menu Hamburguer -->
+      <button class="menu-hamburguer" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
 
-    <!-- Menu Principal (único) -->
-    <nav class="menu-principal">
-      <a href="#inicio">Início</a>
-      <div class="dropdown">
-        <a href="#produtos">Produtos ▾</a>
-        <div class="dropdown-content">
-          <a href="produtos/pneus.html">Pneus</a>
-          <a href="produtos/lubrificantes.html">Lubrificantes</a>
-          <a href="produtos/pastilhas.html">Pastilhas</a>
+      <!-- Menu Principal -->
+      <nav class="menu-principal">
+        <a href="#inicio">Início</a>
+        <div class="dropdown">
+          <a href="#produtos">Produtos ▾</a>
+          <div class="dropdown-content">
+            <a href="produtos/pneus.html">Pneus</a>
+            <a href="produtos/lubrificantes.html">Lubrificantes</a>
+            <a href="produtos/pastilhas.html">Pastilhas</a>
+          </div>
         </div>
-      </div>
-      <a href="#contato">Contato</a>
-      
-      <!-- Ícones (agora dentro do menu) -->
-      <div class="icons">
-        <a href="#favoritos" title="Favoritos">
-          <img src="favorito.png" alt="Favoritos">
-        </a>
-        <a href="#perfil" title="Perfil">
-          <img src="usuario.png" alt="Perfil">
-        </a>
-        <a href="#carrinho" title="Carrinho" id="abrir-carrinho">
-          <img src="cart.png" alt="Carrinho">
-          <span class="cart-count"></span>
-        </a>
-      </div>
-    </nav>
-  </div>
-</header>
+        <a href="#contato">Contato</a>
+        
+        <!-- Ícones -->
+        <div class="icons">
+          <a href="#favoritos" title="Favoritos">
+            <img src="favorito.png" alt="Favoritos">
+          </a>
+          <a href="#perfil" title="Perfil">
+            <img src="usuario.png" alt="Perfil">
+          </a>
+          <a href="#carrinho" title="Carrinho" id="abrir-carrinho">
+            <img src="cart.png" alt="Carrinho">
+            <span class="cart-count"></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
   <main>
     <!-- Seção Destaque -->
@@ -71,19 +69,19 @@
       <h2>Produtos em Destaque</h2>
       <div class="carrossel-container">
         <div class="carrossel-item">
-          <img src="produtos/pneu1.jpg" alt="Pneu Dianteiro">
+          <img src="produtos/pneu1.jpg" alt="Pneu Dianteiro" loading="lazy">
           <h3>Pneu Dianteiro</h3>
           <p>R$ 249,90</p>
           <button onclick="adicionarAoCarrinho('Pneu Dianteiro', 249.90, 'pneu1')">Adicionar ao Carrinho</button>
         </div>
         <div class="carrossel-item">
-          <img src="produtos/lubrificante1.jpg" alt="Óleo 20W50">
+          <img src="produtos/lubrificante1.jpg" alt="Óleo 20W50" loading="lazy">
           <h3>Óleo 20W50</h3>
           <p>R$ 39,90</p>
           <button onclick="adicionarAoCarrinho('Óleo 20W50', 39.90, 'lub1')">Adicionar ao Carrinho</button>
         </div>
         <div class="carrossel-item">
-          <img src="produtos/pastilha1.jpg" alt="Pastilha de Freio">
+          <img src="produtos/pastilha1.jpg" alt="Pastilha de Freio" loading="lazy">
           <h3>Pastilha de Freio</h3>
           <p>R$ 89,90</p>
           <button onclick="adicionarAoCarrinho('Pastilha de Freio', 89.90, 'past1')">Adicionar ao Carrinho</button>
