@@ -27,7 +27,7 @@ function atualizarCarrinho() {
     li.innerHTML = `
       <span>${item.produto} (${item.quantidade}x)</span>
       <span>R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
-      <button onclick="removerItemCompletamente('${item.id}')">Remover</button>
+      <button class="btn-remover" onclick="removerItemCompletamente('${item.id}')">×</button>
     `;
     lista.appendChild(li);
     soma += item.preco * item.quantidade;
@@ -54,12 +54,12 @@ function removerItemCompletamente(idProduto) {
   carrinho = carrinho.filter(item => item.id !== idProduto);
   salvarCarrinho();
   atualizarCarrinho();
+  mostrarNotificacao('Item removido do carrinho!');
 }
 
 function salvarCarrinho() {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
-
 
 // Menu Hamburguer
 const menuHamburguer = document.querySelector('.menu-hamburguer');
@@ -103,6 +103,7 @@ document.addEventListener('click', function(e) {
     });
   }
 });
+
 // Carrossel
 let currentSlide = 0;
 const slides = document.querySelector('.carrossel-container');
@@ -136,24 +137,18 @@ function mostrarNotificacao(mensagem) {
 document.addEventListener('DOMContentLoaded', () => {
   atualizarCarrinho();
   
-  // Menu
-  document.querySelector('.menu-hamburguer')?.addEventListener('click', toggleMenu);
-  
-  // Dropdown mobile
-  document.querySelector('.dropdown-btn')?.addEventListener('click', function(e) {
-    e.preventDefault();
-    this.classList.toggle('active');
-    this.nextElementSibling.classList.toggle('active');
-  });
-
-  // Carrossel
+  // Eventos do Carrossel
   document.querySelector('.carrossel-anterior')?.addEventListener('click', () => moveSlide(-1));
   document.querySelector('.carrossel-proximo')?.addEventListener('click', () => moveSlide(1));
 
-  // Carrinho
+  // Eventos do Carrinho
   document.getElementById('abrir-carrinho')?.addEventListener('click', toggleCarrinho);
   document.querySelector('.fechar-modal')?.addEventListener('click', toggleCarrinho);
   document.getElementById('finalizar-compra')?.addEventListener('click', () => {
     alert('Compra finalizada! Redirecionando para o pagamento...');
+    carrinho = [];
+    salvarCarrinho();
+    atualizarCarrinho();
+    toggleCarrinho();
   });
 });
