@@ -96,6 +96,17 @@ body {
   z-index: 1001;
 }
 
+/* No seu arquivo style.css */
+.menu-hamburguer {
+  background: transparent !important;
+  border: none !important; /* Remove borda quadrada */
+  padding: 10px !important;
+  outline: none !important; /* Remove contorno ao focar */
+}
+
+.menu-hamburguer:focus {
+  box-shadow: none !important; /* Remove sombra no clique */
+}
 .menu-hamburguer .bar {
   display: block;
   width: 100%;
@@ -242,4 +253,32 @@ body {
   .menu-hamburguer.active .bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
+}
+
+/* Estilo unificado para todos os itens */
+.dropdown-mobile button.dropdown-btn {
+  background: none;
+  border: none;
+  color: white; /* Cor igual aos outros links */
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 12px 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover igual aos outros links */
+.dropdown-mobile button.dropdown-btn:hover {
+  color: #ff5722; /* Laranja ao passar o mouse */
+}
+
+/* Seta do dropdown */
+.dropdown-mobile .seta {
+  transition: transform 0.3s;
+  margin-left: 8px;
 }
