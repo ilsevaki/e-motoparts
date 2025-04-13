@@ -110,11 +110,16 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ========== ÍCONES ========== */
+/* ========== ÍCONES DO CARRINHO ========== */
 .icons {
   display: flex;
   gap: 15px;
   align-items: center;
+}
+
+#abrir-carrinho {
+  position: relative;
+  display: inline-block;
 }
 
 .cart-count {
@@ -127,11 +132,15 @@ body {
   width: 18px;
   height: 18px;
   font-size: 10px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   border: 1px solid #fff;
+}
+
+.cart-count.ativo {
+  display: flex;
 }
 
 /* ========== RESPONSIVO ========== */
