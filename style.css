@@ -108,7 +108,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Animação para X */
 .menu-hamburguer.active .bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -141,6 +140,7 @@ body {
   padding: 12px 20px;
   text-decoration: none;
   transition: all 0.3s ease;
+  border-bottom: 1px solid #333;
 }
 
 .menu-mobile a:hover {
@@ -148,9 +148,9 @@ body {
   padding-left: 25px;
 }
 
-/* Dropdown Mobile */
+/* BOTÃO PRODUTOS MOBILE */
 .dropdown-mobile {
-  position: relative;
+  border-bottom: 1px solid #333;
 }
 
 .dropdown-btn {
@@ -160,11 +160,19 @@ body {
   color: white;
   padding: 12px 20px;
   text-align: left;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #333;
+}
+
+.dropdown-btn:hover {
+  background: rgba(255, 87, 34, 0.1);
+  padding-left: 25px;
 }
 
 .dropdown-btn .seta {
@@ -178,7 +186,11 @@ body {
 .submenu-mobile {
   display: none;
   background: rgba(0,0,0,0.2);
-  padding-left: 15px;
+}
+
+.submenu-mobile a {
+  padding-left: 30px;
+  border-bottom: none;
 }
 
 .submenu-mobile.active {
