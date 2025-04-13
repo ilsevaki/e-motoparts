@@ -7,9 +7,10 @@ const elementos = {
   totalElement: document.getElementById("total"),
   contador: document.querySelector('.cart-count'),
   menuHamburguer: document.querySelector('.menu-hamburguer'),
-  menuMobile: document.querySelector('.menu-mobile'),
+  menuPrincipal: document.querySelector('.menu-principal'),
   slides: document.querySelector('.carrossel-container'),
-  modalCarrinho: document.getElementById("carrinho-modal")
+  modalCarrinho: document.getElementById("carrinho-modal"),
+  dropdowns: document.querySelectorAll('.dropdown')
 };
 
 // Funções do carrinho
@@ -19,7 +20,6 @@ function atualizarCarrinho() {
     let soma = 0;
     let totalItens = 0;
 
-    // Atualiza contador
     if (carrinho.length > 0) {
       totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
       elementos.contador.textContent = totalItens;
@@ -28,7 +28,6 @@ function atualizarCarrinho() {
       elementos.contador.classList.remove('ativo');
     }
 
-    // Preenche itens do carrinho
     carrinho.forEach(item => {
       const li = document.createElement("li");
       li.className = "item-carrinho";
@@ -90,42 +89,41 @@ function salvarCarrinho() {
 if (elementos.menuHamburguer) {
   elementos.menuHamburguer.addEventListener('click', function() {
     this.classList.toggle('active');
-    elementos.menuMobile.classList.toggle('active');
-    
-    // Fecha todos os dropdowns ao abrir/fechar o menu
-    document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
-      dropdown.classList.remove('active');
-    });
+    elementos.menuPrincipal.classList.toggle('active');
   });
 }
 
-// Dropdown Mobile
-document.querySelectorAll('.dropdown-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    const parent = this.parentElement;
-    
-    // Fecha outros dropdowns abertos
-    document.querySelectorAll('.dropdown-mobile').forEach(item => {
-      if (item !== parent) {
-        item.classList.remove('active');
-      }
-    });
-    
-    // Abre/fecha o dropdown clicado
-    parent.classList.toggle('active');
+// Dropdown (funciona para desktop e mobile)
+elementos.dropdowns.forEach(dropdown => {
+  const link = dropdown.querySelector('a');
+  
+  link.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768px) {
+      e.preventDefault();
+      dropdown.classList.toggle('active');
+    }
+  });
+
+  // Para desktop
+  dropdown.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 768px) {
+      dropdown.classList.add('active');
+    }
+  });
+
+  dropdown.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 768px) {
+      dropdown.classList.remove('active');
+    }
   });
 });
 
 // Fecha o menu ao clicar fora
 document.addEventListener('click', function(e) {
-  if (!elementos.menuMobile.contains(e.target) && 
+  if (!elementos.menuPrincipal.contains(e.target) && 
       !elementos.menuHamburguer.contains(e.target)) {
-    elementos.menuMobile.classList.remove('active');
+    elementos.menuPrincipal.classList.remove('active');
     elementos.menuHamburguer.classList.remove('active');
-    document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
-      dropdown.classList.remove('active');
-    });
   }
 });
 
