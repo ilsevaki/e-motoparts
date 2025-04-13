@@ -1,32 +1,22 @@
-/* ========== VARIÁVEIS ========== */
-:root {
-  --cor-primaria: #ff5722;
-  --cor-secundaria: #25D366;
-  --cor-fundo: #f8f8f8;
-  --cor-texto: #333;
-  --cor-header: #111;
-  --sombra: 0 2px 10px rgba(0,0,0,0.1);
-}
-
 /* ========== ESTILOS GERAIS ========== */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
+  background: #f8f8f8;
+  color: #333;
   line-height: 1.6;
 }
 
 /* ========== CABEÇALHO ========== */
 .topo {
-  background: var(--cor-header);
+  background: #111;
   color: white;
   padding: 15px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: var(--sombra);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .container-header {
@@ -38,19 +28,19 @@ body {
   padding: 0 20px;
 }
 
-.logo img {
-  height: 50px;
-  transition: transform 0.3s ease;
+/* Logo corrigido - não distorce mais */
+.logo-img {
+  height: auto;
+  max-height: 50px;
+  width: auto;
+  max-width: 150px;
+  display: block;
 }
 
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-/* ========== MENU DESKTOP ========== */
+/* ========== MENU ========== */
 .menu-desktop {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -63,7 +53,7 @@ body {
 }
 
 .menu-desktop a:hover {
-  background: var(--cor-primaria);
+  background: #ff5722;
 }
 
 .dropdown {
@@ -74,12 +64,12 @@ body {
   display: none;
   position: absolute;
   background: #222;
-  min-width: 180px;
+  min-width: 160px;
   top: 100%;
   left: 0;
-  z-index: 10;
-  border-radius: 0 0 4px 4px;
-  animation: fadeIn 0.3s;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .dropdown:hover .dropdown-content {
@@ -120,7 +110,7 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ========== MENU MOBILE ========== */
+/* ========== MENU MOBILE CORRIGIDO ========== */
 @media (max-width: 768px) {
   .menu-desktop {
     display: none;
@@ -136,20 +126,21 @@ body {
     top: 80px;
     left: 0;
     width: 100%;
-    background: var(--cor-header);
-    padding: 0;
+    background: #111;
     z-index: 999;
+    padding: 0;
   }
-  
+
   .menu-mobile.active {
     display: block;
     padding: 10px 0;
   }
-  
+
   .dropdown-mobile {
+    position: relative;
     border-bottom: 1px solid #333;
   }
-  
+
   .dropdown-btn {
     width: 100%;
     padding: 12px 25px;
@@ -163,30 +154,32 @@ body {
     align-items: center;
     cursor: pointer;
   }
-  
+
   .submenu-mobile {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
     background: #1a1a1a;
   }
-  
+
   .dropdown-mobile.active .submenu-mobile {
-    max-height: 500px;
+    max-height: 1000px;
   }
-  
+
   .submenu-mobile a {
     display: block;
-    padding: 10px 35px;
+    padding: 12px 35px;
     color: #ddd;
     text-decoration: none;
     border-bottom: 1px solid #2a2a2a;
+    white-space: nowrap;
   }
-  
+
   .seta {
     transition: transform 0.3s ease;
+    display: inline-block;
   }
-  
+
   .dropdown-mobile.active .seta {
     transform: rotate(180deg);
   }
@@ -265,7 +258,7 @@ body {
 }
 
 .carrossel-item button {
-  background: var(--cor-primaria);
+  background: #ff5722;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -310,7 +303,7 @@ body {
   border-radius: 10px;
 }
 
-/* ========== BOTÃO WHATSAPP ========== */
+/* ========== BOTÃO WHATSAPP CORRIGIDO ========== */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -325,21 +318,21 @@ body {
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
   z-index: 1001;
   transition: all 0.3s;
+  padding: 15px;
 }
 
-.whatsapp-float img {
-  width: 32px;
-  height: 32px;
+.whatsapp-icon {
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  transition: all 0.3s;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
-  background: var(--cor-secundaria);
+  background: #25D366;
 }
 
-.whatsapp-float:hover img {
+.whatsapp-float:hover .whatsapp-icon {
   filter: brightness(0) invert(1);
 }
 
@@ -352,10 +345,13 @@ body {
   color: white;
 }
 
-/* ========== ANIMAÇÕES ========== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.destaque h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.destaque p {
+  font-size: 1.2rem;
 }
 
 /* ========== RESPONSIVO ========== */
@@ -367,9 +363,10 @@ body {
   .whatsapp-float {
     width: 50px;
     height: 50px;
+    padding: 12px;
   }
   
-  .whatsapp-float img {
+  .whatsapp-icon {
     width: 26px;
     height: 26px;
   }
