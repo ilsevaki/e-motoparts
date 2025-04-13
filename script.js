@@ -30,6 +30,7 @@ function atualizarCarrinho() {
     elementos.contador.textContent = totalItens;
     elementos.contador.classList.add('ativo');
   } else {
+    elementos.contador.textContent = "0";
     elementos.contador.classList.remove('ativo');
   }
 
@@ -114,7 +115,6 @@ elementos.dropdowns.forEach(dropdown => {
   link.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
       e.preventDefault();
-      // Fecha outros dropdowns antes de abrir o atual
       elementos.dropdowns.forEach(d => {
         if (d !== dropdown) d.classList.remove('active');
       });
