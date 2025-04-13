@@ -15,70 +15,52 @@ const elementos = {
 
 // Funções do carrinho
 function atualizarCarrinho() {
-  try {
-    elementos.listaCarrinho.innerHTML = "";
-    let soma = 0;
-    let totalItens = 0;
+  elementos.listaCarrinho.innerHTML = "";
+  let soma = 0;
+  let totalItens = 0;
 
-    if (carrinho.length > 0) {
-      totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
-      elementos.contador.textContent = totalItens;
-      elementos.contador.classList.add('ativo');
-    } else {
-      elementos.contador.classList.remove('ativo');
-    }
-
-    carrinho.forEach(item => {
-      const li = document.createElement("li");
-      li.className = "item-carrinho";
-      li.innerHTML = `
-        <span>${item.produto} (${item.quantidade}x)</span>
-        <span>R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
-        <button class="btn-remover" onclick="removerItemCompletamente('${item.id}')">×</button>
-      `;
-      elementos.listaCarrinho.appendChild(li);
-      soma += item.preco * item.quantidade;
-    });
-
-    elementos.totalElement.innerHTML = `Total: R$ ${soma.toFixed(2)}`;
-  } catch (error) {
-    console.error("Erro ao atualizar carrinho:", error);
+  if (carrinho.length > 0) {
+    totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+    elementos.contador.textContent = totalItens;
+    elementos.contador.classList.add('ativo');
+  } else {
+    elementos.contador.classList.remove('ativo');
   }
+
+  carrinho.forEach(item => {
+    const li = document.createElement("li");
+    li.className = "item-carrinho";
+    li.innerHTML = `
+      <span>${item.produto} (${item.quantidade}x)</span>
+      <span>R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
+      <button class="btn-remover" onclick="removerItemCompletamente('${item.id}')">×</button>
+    `;
+    elementos.listaCarrinho.appendChild(li);
+    soma += item.preco * item.quantidade;
+  });
+
+  elementos.totalElement.innerHTML = `Total: R$ ${soma.toFixed(2)}`;
 }
 
 function adicionarAoCarrinho(produto, preco, idProduto) {
-  try {
-    const itemExistente = carrinho.find(item => item.id === idProduto);
-    
-    if (itemExistente) {
-      itemExistente.quantidade += 1;
-    } else {
-      carrinho.push({ 
-        id: idProduto, 
-        produto, 
-        preco, 
-        quantidade: 1 
-      });
-    }
-    
-    salvarCarrinho();
-    atualizarCarrinho();
-    mostrarNotificacao(`${produto} adicionado ao carrinho!`);
-  } catch (error) {
-    console.error("Erro ao adicionar ao carrinho:", error);
-    mostrarNotificacao("Erro ao adicionar produto!");
+  const itemExistente = carrinho.find(item => item.id === idProduto);
+  
+  if (itemExistente) {
+    itemExistente.quantidade += 1;
+  } else {
+    carrinho.push({ id: idProduto, produto, preco, quantidade: 1 });
   }
+  
+  salvarCarrinho();
+  atualizarCarrinho();
+  mostrarNotificacao(`${produto} adicionado ao carrinho!`);
 }
 
 function removerItemCompletamente(idProduto) {
-  try {
-    carrinho = carrinho.filter(item => item.id !== idProduto);
-    salvarCarrinho();
-    atualizarCarrinho();
-    mostrarNotificacao('Item removido do carrinho!');
-  } catch (error) {
-    console.error("Erro ao remover item:", error);
-  }
+  carrinho = carrinho.filter(item => item.id !== idProduto);
+  salvarCarrinho();
+  atualizarCarrinho();
+  mostrarNotificacao('Item removido do carrinho!');
 }
 
 function salvarCarrinho() {
@@ -86,45 +68,48 @@ function salvarCarrinho() {
 }
 
 // Menu Hamburguer
-if (elementos.menuHamburguer) {
-  elementos.menuHamburguer.addEventListener('click', function() {
+if (elementos.menuHamburguer && elementos.menuPrincipal) {
+  elementos.menuHamburguer.addEventListener('click', function(e) {
+    e.stopPropagation();
     this.classList.toggle('active');
     elementos.menuPrincipal.classList.toggle('active');
   });
+
+  // Fecha o menu ao clicar fora (mobile)
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768 && 
+        !elementos.menuPrincipal.contains(e.target) && 
+        !elementos.menuHamburguer.contains(e.target)) {
+      elementos.menuPrincipal.classList.remove('active');
+      elementos.menuHamburguer.classList.remove('active');
+    }
+  });
 }
 
-// Dropdown (funciona para desktop e mobile)
+// Dropdowns
 elementos.dropdowns.forEach(dropdown => {
   const link = dropdown.querySelector('a');
   
+  // Comportamento para mobile
   link.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768px) {
+    if (window.innerWidth <= 768) {
       e.preventDefault();
       dropdown.classList.toggle('active');
     }
   });
 
-  // Para desktop
-  dropdown.addEventListener('mouseenter', () => {
-    if (window.innerWidth > 768px) {
-      dropdown.classList.add('active');
+  // Comportamento para desktop
+  dropdown.addEventListener('mouseenter', function() {
+    if (window.innerWidth > 768) {
+      this.classList.add('active');
     }
   });
 
-  dropdown.addEventListener('mouseleave', () => {
-    if (window.innerWidth > 768px) {
-      dropdown.classList.remove('active');
+  dropdown.addEventListener('mouseleave', function() {
+    if (window.innerWidth > 768) {
+      this.classList.remove('active');
     }
   });
-});
-
-// Fecha o menu ao clicar fora
-document.addEventListener('click', function(e) {
-  if (!elementos.menuPrincipal.contains(e.target) && 
-      !elementos.menuHamburguer.contains(e.target)) {
-    elementos.menuPrincipal.classList.remove('active');
-    elementos.menuHamburguer.classList.remove('active');
-  }
 });
 
 // Carrossel
@@ -160,37 +145,25 @@ function mostrarNotificacao(mensagem) {
 }
 
 // Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    atualizarCarrinho();
-    
-    // Eventos do Carrossel
-    document.querySelector('.carrossel-anterior')?.addEventListener('click', () => moveSlide(-1));
-    document.querySelector('.carrossel-proximo')?.addEventListener('click', () => moveSlide(1));
+document.addEventListener('DOMContentLoaded', function() {
+  atualizarCarrinho();
+  
+  // Carrossel
+  document.querySelector('.carrossel-anterior')?.addEventListener('click', () => moveSlide(-1));
+  document.querySelector('.carrossel-proximo')?.addEventListener('click', () => moveSlide(1));
 
-    // Eventos do Carrinho
-    document.getElementById('abrir-carrinho')?.addEventListener('click', toggleCarrinho);
-    document.querySelector('.fechar-modal')?.addEventListener('click', toggleCarrinho);
-    document.getElementById('finalizar-compra')?.addEventListener('click', finalizarCompra);
-  } catch (error) {
-    console.error("Erro na inicialização:", error);
-  }
-});
-
-function finalizarCompra() {
-  try {
+  // Carrinho
+  document.getElementById('abrir-carrinho')?.addEventListener('click', toggleCarrinho);
+  document.querySelector('.fechar-modal')?.addEventListener('click', toggleCarrinho);
+  document.getElementById('finalizar-compra')?.addEventListener('click', function() {
     if (carrinho.length === 0) {
       mostrarNotificacao("Seu carrinho está vazio!");
       return;
     }
-    
     alert('Compra finalizada! Redirecionando para o pagamento...');
     carrinho = [];
     salvarCarrinho();
     atualizarCarrinho();
     toggleCarrinho();
-  } catch (error) {
-    console.error("Erro ao finalizar compra:", error);
-    mostrarNotificacao("Erro ao finalizar compra!");
-  }
-}
+  });
+});
