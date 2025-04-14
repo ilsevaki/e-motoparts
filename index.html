@@ -6,62 +6,61 @@
   <title>E-motoparts</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <!-- WhatsApp flutuante -->
   <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
-    <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    <img src="assets/img/whatsapp.png" alt="WhatsApp">
   </a>
 
   <header class="topo">
     <div class="container-header">
       <!-- Logo -->
       <div class="logo">
-        <img src="logo.png" alt="E-motoparts">
+        <img src="assets/img/logo.png" alt="E-motoparts">
       </div>
-      
-<div class="barra-pesquisa">
-  <input type="text" id="campo-pesquisa" placeholder="Buscar peças...">
-  <button id="botao-pesquisa">
-    <i class="fas fa-search"></i>
-  </button>
-  <div class="sugestoes-pesquisa" id="sugestoes"></div>
-</div>
-      <!-- Menu Hamburguer -->
-      <button class="menu-hamburguer" aria-label="Menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
 
-      <!-- Menu Principal -->
-      <nav class="menu-principal">
-        <a href="#inicio">Início</a>
-        <div class="dropdown">
-          <a href="#produtos">Produtos ▾</a>
-          <div class="dropdown-content">
-            <a href="produtos/pneus.html">Pneus</a>
-            <a href="produtos/lubrificantes.html">Lubrificantes</a>
-            <a href="produtos/pastilhas.html">Pastilhas</a>
-          </div>
+      <!-- Barra de Pesquisa -->
+      <div class="barra-pesquisa-container">
+        <div class="barra-pesquisa">
+          <input type="text" placeholder="Buscar peças...">
+          <button><i class="fas fa-search"></i></button>
         </div>
-        <a href="#contato">Contato</a>
+      </div>
+
+      <!-- Ícones -->
+      <div class="acoes-header">
+        <button class="menu-hamburguer" aria-label="Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
         
-        <!-- Ícones -->
         <div class="icons">
-          <a href="#favoritos" title="Favoritos">
-            <img src="favorito.png" alt="Favoritos">
-          </a>
-          <a href="#perfil" title="Perfil">
-            <img src="usuario.png" alt="Perfil">
-          </a>
-          <a href="#carrinho" title="Carrinho" id="abrir-carrinho">
-            <img src="cart.png" alt="Carrinho">
+          <a href="#favoritos"><i class="far fa-heart"></i></a>
+          <a href="#perfil"><i class="far fa-user"></i></a>
+          <a href="#carrinho" id="abrir-carrinho">
+            <i class="fas fa-shopping-cart"></i>
             <span class="cart-count"></span>
           </a>
         </div>
-      </nav>
+      </div>
     </div>
+
+    <!-- Menu Principal -->
+    <nav class="menu-principal">
+      <a href="#inicio">Início</a>
+      <div class="dropdown">
+        <a href="#produtos">Produtos ▾</a>
+        <div class="dropdown-content">
+          <a href="produtos/pneus.html">Pneus</a>
+          <a href="produtos/lubrificantes.html">Lubrificantes</a>
+          <a href="produtos/pastilhas.html">Pastilhas</a>
+        </div>
+      </div>
+      <a href="#contato">Contato</a>
+    </nav>
   </header>
 
   <main>
@@ -76,22 +75,16 @@
       <h2>Produtos em Destaque</h2>
       <div class="carrossel-container">
         <div class="carrossel-item">
-          <img src="produtos/pneu1.jpg" alt="Pneu Dianteiro" loading="lazy">
+          <img src="assets/img/produtos/pneu1.jpg" alt="Pneu Dianteiro" loading="lazy">
           <h3>Pneu Dianteiro</h3>
           <p>R$ 249,90</p>
           <button onclick="adicionarAoCarrinho('Pneu Dianteiro', 249.90, 'pneu1')">Adicionar ao Carrinho</button>
         </div>
         <div class="carrossel-item">
-          <img src="produtos/lubrificante1.jpg" alt="Óleo 20W50" loading="lazy">
+          <img src="assets/img/produtos/lubrificante1.jpg" alt="Óleo 20W50" loading="lazy">
           <h3>Óleo 20W50</h3>
           <p>R$ 39,90</p>
           <button onclick="adicionarAoCarrinho('Óleo 20W50', 39.90, 'lub1')">Adicionar ao Carrinho</button>
-        </div>
-        <div class="carrossel-item">
-          <img src="produtos/pastilha1.jpg" alt="Pastilha de Freio" loading="lazy">
-          <h3>Pastilha de Freio</h3>
-          <p>R$ 89,90</p>
-          <button onclick="adicionarAoCarrinho('Pastilha de Freio', 89.90, 'past1')">Adicionar ao Carrinho</button>
         </div>
       </div>
       <div class="carrossel-controles">
