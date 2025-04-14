@@ -1,50 +1,59 @@
-/* ===== ESTILOS GERAIS ===== */
-* {
+/* ========== ESTILOS GERAIS ========== */
+body {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
 }
 
-body {
-  background: #f5f5f5;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ===== TOPO ===== */
+/* ========== CABEÇALHO ========== */
 .topo {
   background: #111;
   color: white;
   padding: 15px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.topo .container {
+.container-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .logo img {
-  height: 50px;
+  height: auto;
+  max-height: 50px;
+  width: auto;
+  max-width: 150px;
+  display: block;
 }
 
-.menu-principal ul {
+/* ========== MENU PRINCIPAL ========== */
+.menu-principal {
   display: flex;
-  list-style: none;
+  align-items: center;
   gap: 20px;
+  transition: all 0.3s ease;
 }
 
 .menu-principal a {
   color: white;
   text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.menu-principal a:hover {
+  background: #ff5722;
 }
 
 .dropdown {
@@ -54,157 +63,207 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background: white;
+  background: #222;
   min-width: 160px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  top: 100%;
+  left: 0;
   z-index: 1;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
   display: block;
 }
 
-/* ===== BARRA DE PESQUISA ===== */
-.barra-pesquisa {
+/* ========== MENU HAMBÚRGUER ========== */
+.menu-hamburguer {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  z-index: 1001;
+}
+
+.menu-hamburguer .bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-hamburguer.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-hamburguer.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ========== ÍCONES DO CARRINHO ========== */
+.icons {
   display: flex;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  overflow: hidden;
+  gap: 15px;
+  align-items: center;
 }
 
-.barra-pesquisa input {
-  border: none;
-  padding: 8px 15px;
-  width: 200px;
-}
-
-.barra-pesquisa button {
-  background: #ff5722;
-  color: white;
-  border: none;
-  padding: 0 15px;
-  cursor: pointer;
-}
-
-/* ===== CARRINHO ===== */
-.carrinho-icon {
+#abrir-carrinho {
   position: relative;
-  cursor: pointer;
+  display: inline-block;
 }
 
 .cart-count {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background: red;
+  top: -8px;
+  right: -8px;
+  background: #ff0000;
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid #fff;
+}
+
+.cart-count.ativo {
+  display: flex;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+  .menu-hamburguer {
+    display: flex;
+  }
+
+  .menu-principal {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 80%;
+    height: calc(100vh - 80px);
+    background: #111;
+    flex-direction: column;
+    padding: 20px 0;
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  .menu-principal.active {
+    left: 0;
+  }
+
+  .dropdown-content {
+    position: static;
+    display: none;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .menu-principal > a,
+  .dropdown > a {
+    padding: 15px 25px;
+    border-bottom: 1px solid #333;
+  }
+
+  .icons {
+    justify-content: center;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #333;
+  }
+}
+
+/* ========== BOTÃO WHATSAPP ========== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1001;
+  transition: all 0.3s;
 }
 
-/* ===== CARROSSEL ===== */
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background: #25D366;
+}
+
+.whatsapp-float:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* ========== CARROSSEL ========== */
 .carrossel {
-  position: relative;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   overflow: hidden;
-  margin: 20px 0;
 }
 
 .carrossel-container {
   display: flex;
   transition: transform 0.5s ease;
+  gap: 20px;
 }
 
 .carrossel-item {
-  min-width: 100%;
+  min-width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .carrossel-item img {
   width: 100%;
-  height: auto;
-}
-
-.carrossel-anterior, .carrossel-proximo {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.carrossel-anterior {
-  left: 10px;
-}
-
-.carrossel-proximo {
-  right: 10px;
-}
-
-/* ===== PRODUTOS ===== */
-.produtos {
-  padding: 40px 0;
-}
-
-.produtos h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.produtos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.produto-card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-
-.produto-card:hover {
-  transform: translateY(-5px);
-}
-
-.produto-card img {
-  width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-.produto-card h3 {
-  padding: 10px;
-  font-size: 1.2rem;
+.carrossel-controles {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.produto-card .preco {
-  padding: 0 10px;
-  font-weight: bold;
-  color: #ff5722;
-}
-
-.btn-comprar {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background: #ff5722;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-/* ===== MODAL CARRINHO ===== */
-.modal {
+/* ========== MODAL DO CARRINHO ========== */
+#carrinho-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -212,16 +271,16 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.5);
-  z-index: 1000;
+  z-index: 1002;
 }
 
-.modal-conteudo {
+#carrinho-modal .modal-conteudo {
   background: white;
   margin: 5% auto;
   padding: 20px;
   width: 80%;
   max-width: 600px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .fechar-modal {
@@ -230,58 +289,64 @@ body {
   cursor: pointer;
 }
 
-/* ===== RODAPÉ ===== */
-footer {
-  background: #222;
-  color: white;
-  padding: 40px 0;
-}
-
-footer .container {
+/* ========== ITENS DO CARRINHO ========== */
+.item-carrinho {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
 
-.rodape-coluna {
-  flex: 1;
-  padding: 0 20px;
+.quantidade-controle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.rodape-coluna h4 {
-  margin-bottom: 15px;
-  font-size: 1.2rem;
+.quantidade-controle button {
+  background: #f0f0f0;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.rodape-coluna a, .rodape-coluna p {
-  color: #ccc;
-  display: block;
-  margin-bottom: 8px;
-  text-decoration: none;
+.btn-remover {
+  background: #ff4444;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
-  .menu-principal {
-    display: none;
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: #111;
-    padding: 20px;
-  flex-direction: column;
-  }
-  
-  .menu-principal.ativo {
-    display: flex;
-  }
-  
-  .menu-mobile {
-    display: block;
-    cursor: pointer;
-  }
-  
-  .barra-pesquisa input {
-    width: 150px;
-  }
+/* ========== NOTIFICAÇÕES ========== */
+.notificacao {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #25D366;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1100;
+  animation: fadeIn 0.3s;
+}
+
+.notificacao.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; bottom: 10px; }
+  to { opacity: 1; bottom: 20px; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; bottom: 10px; }
 }
