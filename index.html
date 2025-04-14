@@ -3,107 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-motoparts</title>
+  <title>Motos Parts - Peças e Acessórios</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- WhatsApp flutuante -->
-  <a href="https://wa.me/5511962727074" class="whatsapp-float" target="_blank" rel="noopener">
-    <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
-  </a>
-
+  <!-- Topo/Navegação -->
   <header class="topo">
-    <div class="container-header">
-      <!-- Logo -->
+    <div class="container">
       <div class="logo">
-        <img src="logo.png" alt="E-motoparts">
+        <img src="https://via.placeholder.com/150x50?text=MotosParts" alt="Logo">
       </div>
-
-      <!-- Menu Hamburguer -->
-      <button class="menu-hamburguer" aria-label="Menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-
-      <!-- Menu Principal -->
+      
+      <div class="menu-mobile">
+        <i class="fas fa-bars"></i>
+      </div>
+      
       <nav class="menu-principal">
-        <a href="#inicio">Início</a>
-        <div class="dropdown">
-          <a href="#produtos">Produtos ▾</a>
-          <div class="dropdown-content">
-            <a href="produtos/pneus.html">Pneus</a>
-            <a href="produtos/lubrificantes.html">Lubrificantes</a>
-            <a href="produtos/pastilhas.html">Pastilhas</a>
-          </div>
-        </div>
-        <a href="#contato">Contato</a>
-        
-        <!-- Ícones -->
-        <div class="icons">
-          <a href="#favoritos" title="Favoritos">
-            <img src="favorito.png" alt="Favoritos">
-          </a>
-          <a href="#perfil" title="Perfil">
-            <img src="usuario.png" alt="Perfil">
-          </a>
-          <a href="#carrinho" title="Carrinho" id="abrir-carrinho">
-            <img src="cart.png" alt="Carrinho">
-            <span class="cart-count"></span>
-          </a>
-        </div>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li class="dropdown">
+            <a href="#">Peças <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="#">Motor</a>
+              <a href="#">Freios</a>
+              <a href="#">Suspensão</a>
+            </div>
+          </li>
+          <li><a href="#">Promoções</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
       </nav>
+      
+      <div class="acoes">
+        <div class="barra-pesquisa">
+          <input type="text" placeholder="Buscar...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="carrinho-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- Seção Destaque -->
-    <section class="destaque" id="inicio">
-      <h1>Bem-vindo à E-motoparts</h1>
-      <p>Sua loja online de motopeças com os melhores preços</p>
-    </section>
-
-    <!-- Carrossel de Produtos -->
-    <section class="carrossel">
-      <h2>Produtos em Destaque</h2>
-      <div class="carrossel-container">
-        <div class="carrossel-item">
-          <img src="produtos/pneu1.jpg" alt="Pneu Dianteiro" loading="lazy">
-          <h3>Pneu Dianteiro</h3>
-          <p>R$ 249,90</p>
-          <button onclick="adicionarAoCarrinho('Pneu Dianteiro', 249.90, 'pneu1')">Adicionar ao Carrinho</button>
-        </div>
-        <div class="carrossel-item">
-          <img src="produtos/lubrificante1.jpg" alt="Óleo 20W50" loading="lazy">
-          <h3>Óleo 20W50</h3>
-          <p>R$ 39,90</p>
-          <button onclick="adicionarAoCarrinho('Óleo 20W50', 39.90, 'lub1')">Adicionar ao Carrinho</button>
-        </div>
-        <div class="carrossel-item">
-          <img src="produtos/pastilha1.jpg" alt="Pastilha de Freio" loading="lazy">
-          <h3>Pastilha de Freio</h3>
-          <p>R$ 89,90</p>
-          <button onclick="adicionarAoCarrinho('Pastilha de Freio', 89.90, 'past1')">Adicionar ao Carrinho</button>
-        </div>
+  <!-- Carrossel -->
+  <section class="carrossel">
+    <div class="carrossel-container">
+      <div class="carrossel-item ativo">
+        <img src="https://via.placeholder.com/1200x400?text=Banner+1" alt="Banner 1">
       </div>
-      <div class="carrossel-controles">
-        <button class="carrossel-anterior">❮</button>
-        <button class="carrossel-proximo">❯</button>
-      </div>
-    </section>
-
-    <!-- Modal do Carrinho -->
-    <div id="carrinho-modal" class="modal">
-      <div class="modal-conteudo">
-        <span class="fechar-modal">&times;</span>
-        <h2>Seu Carrinho</h2>
-        <ul id="itens-carrinho"></ul>
-        <div id="total">Total: R$ 0,00</div>
-        <button id="finalizar-compra">Finalizar Compra</button>
+      <div class="carrossel-item">
+        <img src="https://via.placeholder.com/1200x400?text=Banner+2" alt="Banner 2">
       </div>
     </div>
-  </main>
+    <button class="carrossel-anterior"><i class="fas fa-chevron-left"></i></button>
+    <button class="carrossel-proximo"><i class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <!-- Produtos -->
+  <section class="produtos">
+    <h2>Produtos em Destaque</h2>
+    <div class="produtos-grid">
+      <div class="produto-card">
+        <img src="https://via.placeholder.com/300x200?text=Produto+1" alt="Produto 1">
+        <h3>Pastilha de Freio</h3>
+        <p class="preco">R$ 89,90</p>
+        <button class="btn-comprar" onclick="adicionarAoCarrinho('Pastilha de Freio', 89.90, 'prod1')">Comprar</button>
+      </div>
+      <!-- Mais produtos... -->
+    </div>
+  </section>
+
+  <!-- Modal Carrinho -->
+  <div id="carrinho-modal" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar-modal">&times;</span>
+      <h2>Seu Carrinho</h2>
+      <ul id="itens-carrinho"></ul>
+      <div id="total">Total: R$ 0,00</div>
+      <button id="finalizar-compra">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="rodape-coluna">
+      <h4>Institucional</h4>
+      <a href="#">Sobre Nós</a>
+      <a href="#">Políticas</a>
+    </div>
+    <div class="rodape-coluna">
+      <h4>Atendimento</h4>
+      <p><i class="fas fa-envelope"></i> contato@motosparts.com.br</p>
+      <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
