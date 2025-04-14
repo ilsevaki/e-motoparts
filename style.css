@@ -1,18 +1,26 @@
 /* ========== ESTILOS GERAIS ========== */
+:root {
+  --laranja: #ff5722;
+  --preto: #111;
+  --cinza-claro: #f8f8f8;
+  --cinza-escuro: #333;
+  --branco: #fff;
+  --whatsapp: #25D366;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: #f8f8f8;
-  color: #333;
+  background: var(--cinza-claro);
+  color: var(--cinza-escuro);
   line-height: 1.6;
 }
 
 /* ========== CABEÇALHO ========== */
 .topo {
-  background: #111;
-  color: white;
-  padding: 15px 0;
+  background: var(--preto);
+  color: var(--branco);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -20,42 +28,121 @@ body {
 }
 
 .container-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 15px 20px;
 }
 
 .logo img {
-  height: auto;
-  max-height: 50px;
+  height: 50px;
   width: auto;
-  max-width: 150px;
-  display: block;
 }
 
-/* ========== MENU PRINCIPAL ========== */
-.menu-principal {
+/* Barra de Pesquisa */
+.barra-pesquisa-container {
+  display: flex;
+  justify-content: center;
+}
+
+.barra-pesquisa {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+}
+
+.barra-pesquisa input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 30px 0 0 30px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.barra-pesquisa input:focus {
+  border-color: var(--laranja);
+}
+
+.barra-pesquisa button {
+  background: var(--laranja);
+  color: var(--branco);
+  border: none;
+  border-radius: 0 30px 30px 0;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.barra-pesquisa button:hover {
+  background: #e64a19;
+}
+
+/* Ícones */
+.acoes-header {
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: all 0.3s ease;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icons a {
+  color: var(--branco);
+  font-size: 18px;
+  position: relative;
+}
+
+/* Menu Hamburguer */
+.menu-hamburguer {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-hamburguer .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--branco);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Menu Principal */
+.menu-principal {
+  display: flex;
+  justify-content: center;
+  background: var(--preto);
+  padding: 10px 0;
+  transition: all 0.3s;
 }
 
 .menu-principal a {
-  color: white;
+  color: var(--branco);
   text-decoration: none;
   padding: 10px 15px;
+  margin: 0 5px;
   border-radius: 4px;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 .menu-principal a:hover {
-  background: #ff5722;
+  background: var(--laranja);
 }
 
+/* Dropdown */
 .dropdown {
   position: relative;
 }
@@ -72,56 +159,11 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.dropdown.active .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* ========== MENU HAMBÚRGUER ========== */
-.menu-hamburguer {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  flex-direction: column;
-  gap: 5px;
-  width: 32px;
-  z-index: 1001;
-}
-
-.menu-hamburguer .bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.menu-hamburguer.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-hamburguer.active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-hamburguer.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* ========== ÍCONES DO CARRINHO ========== */
-.icons {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-#abrir-carrinho {
-  position: relative;
-  display: inline-block;
-}
-
+/* Contador do Carrinho */
 .cart-count {
   position: absolute;
   top: -8px;
@@ -136,60 +178,11 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  border: 1px solid #fff;
+  border: 1px solid var(--branco);
 }
 
 .cart-count.ativo {
   display: flex;
-}
-
-/* ========== RESPONSIVO ========== */
-@media (max-width: 768px) {
-  .menu-hamburguer {
-    display: flex;
-  }
-
-  .menu-principal {
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    width: 80%;
-    height: calc(100vh - 80px);
-    background: #111;
-    flex-direction: column;
-    padding: 20px 0;
-    transition: left 0.3s ease;
-    z-index: 999;
-  }
-
-  .menu-principal.active {
-    left: 0;
-  }
-
-  .dropdown-content {
-    position: static;
-    display: none;
-    width: 100%;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  .dropdown.active .dropdown-content {
-    display: block;
-  }
-
-  .menu-principal > a,
-  .dropdown > a {
-    padding: 15px 25px;
-    border-bottom: 1px solid #333;
-  }
-
-  .icons {
-    justify-content: center;
-    padding-top: 15px;
-    margin-top: 15px;
-    border-top: 1px solid #333;
-  }
 }
 
 /* ========== BOTÃO WHATSAPP ========== */
@@ -199,29 +192,21 @@ body {
   right: 20px;
   width: 60px;
   height: 60px;
-  background: white;
+  background: var(--whatsapp);
+  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  z-index: 1001;
+  z-index: 1000;
   transition: all 0.3s;
-}
-
-.whatsapp-float img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
-  background: #25D366;
-}
-
-.whatsapp-float:hover img {
-  filter: brightness(0) invert(1);
+  background: #128C7E;
 }
 
 /* ========== CARROSSEL ========== */
@@ -262,7 +247,7 @@ body {
   margin-top: 20px;
 }
 
-/* ========== MODAL DO CARRINHO ========== */
+/* ========== MODAL CARRINHO ========== */
 #carrinho-modal {
   display: none;
   position: fixed;
@@ -281,10 +266,13 @@ body {
   width: 80%;
   max-width: 600px;
   border-radius: 10px;
+  position: relative;
 }
 
 .fechar-modal {
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 15px;
   font-size: 24px;
   cursor: pointer;
 }
@@ -323,98 +311,50 @@ body {
   cursor: pointer;
 }
 
-/* ========== NOTIFICAÇÕES ========== */
-.notificacao {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #25D366;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  z-index: 1100;
-  animation: fadeIn 0.3s;
+/* ========== RESPONSIVO ========== */
+@media (max-width: 992px) {
+  .container-header {
+    grid-template-columns: auto 1fr auto;
+  }
+  
+  .menu-principal {
+    flex-wrap: wrap;
+  }
 }
 
-.notificacao.fade-out {
-  animation: fadeOut 0.5s forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; bottom: 10px; }
-  to { opacity: 1; bottom: 20px; }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; bottom: 10px; }
-}
-/* ===== BARRA DE PESQUISA ===== */
-.barra-pesquisa {
-  position: relative;
-  display: flex;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 20px;
-}
-
-#campo-pesquisa {
-  flex: 1;
-  padding: 10px 15px;
-  border: 2px solid #ddd;
-  border-radius: 30px 0 0 30px;
-  font-family: 'Poppins', sans-serif;
-  outline: none;
-  transition: all 0.3s;
-}
-
-#campo-pesquisa:focus {
-  border-color: #ff5722;
-}
-
-#botao-pesquisa {
-  background: #ff5722;
-  color: white;
-  border: none;
-  border-radius: 0 30px 30px 0;
-  padding: 0 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-#botao-pesquisa:hover {
-  background: #e64a19;
-}
-
-.sugestoes-pesquisa {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: white;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  z-index: 1000;
-  display: none;
-}
-
-.sugestoes-pesquisa a {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-}
-
-.sugestoes-pesquisa a:hover {
-  background: #f5f5f5;
-}
-
-/* Responsivo */
 @media (max-width: 768px) {
-  .barra-pesquisa {
+  .container-header {
+    grid-template-columns: auto 1fr auto;
+    gap: 15px;
+  }
+  
+  .barra-pesquisa-container {
     order: 3;
-    width: 100%;
-    margin: 15px 0 0;
+    grid-column: span 3;
+  }
+  
+  .menu-hamburguer {
+    display: flex;
+  }
+  
+  .menu-principal {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 80%;
+    height: calc(100vh - 80px);
+    flex-direction: column;
+    padding: 20px;
+    transition: left 0.3s;
+  }
+  
+  .menu-principal.active {
+    left: 0;
+  }
+  
+  .dropdown-content {
+    position: static;
+    display: none;
+    box-shadow: none;
   }
 }
