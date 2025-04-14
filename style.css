@@ -208,7 +208,17 @@ body {
   transform: scale(1.1);
   background: #128C7E;
 }
+.whatsapp-float img {
+  width: 24px;   /* Tamanho do ícone */
+  height: 24px;  /* Tamanho do ícone */
+  object-fit: contain;
+  transition: all 0.3s;
+}
 
+/* Efeito hover opcional */
+.whatsapp-float:hover img {
+  transform: scale(1.1);
+}
 /* ========== CARROSSEL ========== */
 .carrossel {
   padding: 40px 20px;
