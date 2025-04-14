@@ -350,3 +350,71 @@ body {
 @keyframes fadeOut {
   to { opacity: 0; bottom: 10px; }
 }
+/* ===== BARRA DE PESQUISA ===== */
+.barra-pesquisa {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+#campo-pesquisa {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 30px 0 0 30px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: all 0.3s;
+}
+
+#campo-pesquisa:focus {
+  border-color: #ff5722;
+}
+
+#botao-pesquisa {
+  background: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 0 30px 30px 0;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#botao-pesquisa:hover {
+  background: #e64a19;
+}
+
+.sugestoes-pesquisa {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: none;
+}
+
+.sugestoes-pesquisa a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.sugestoes-pesquisa a:hover {
+  background: #f5f5f5;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .barra-pesquisa {
+    order: 3;
+    width: 100%;
+    margin: 15px 0 0;
+  }
+}
