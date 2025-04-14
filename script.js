@@ -203,3 +203,69 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleCarrinho();
   });
 });
+// Dados de exemplo (substitua pelos seus produtos reais)
+const produtos = [
+  { nome: "Pastilha de Freio", categoria: "Freios", link: "produtos/freios.html" },
+  { nome: "Óleo 20W50", categoria: "Lubrificantes", link: "produtos/lubrificantes.html" },
+  { nome: "Pneu Dianteiro", categoria: "Pneus", link: "produtos/pneus.html" }
+];
+
+// Elementos DOM
+const campoPesquisa = document.getElementById('campo-pesquisa');
+const botaoPesquisa = document.getElementById('botao-pesquisa');
+const sugestoes = document.getElementById('sugestoes');
+
+// Função de pesquisa
+function pesquisar() {
+  const termo = campoPesquisa.value.toLowerCase();
+  if (termo.trim() === '') return;
+
+  // Filtra produtos (substitua por busca real se tiver backend)
+  const resultados = produtos.filter(produto => 
+    produto.nome.toLowerCase().includes(termo) || 
+    produto.categoria.toLowerCase().includes(termo)
+  );
+
+  // Exibe resultados
+  if (resultados.length > 0) {
+    window.location.href = resultados[0].link; // Redireciona para o primeiro resultado
+  } else {
+    mostrarNotificacao("Nenhum produto encontrado!");
+  }
+}
+
+// Sugestões ao digitar
+campoPesquisa.addEventListener('input', function() {
+  const termo = this.value.toLowerCase();
+  sugestoes.innerHTML = '';
+
+  if (termo.length > 1) {
+    const filtrados = produtos.filter(produto => 
+      produto.nome.toLowerCase().includes(termo)
+    ).slice(0, 5); // Limita a 5 sugestões
+
+    filtrados.forEach(produto => {
+      const link = document.createElement('a');
+      link.href = produto.link;
+      link.textContent = produto.nome;
+      sugestoes.appendChild(link);
+    });
+
+    sugestoes.style.display = filtrados.length ? 'block' : 'none';
+  } else {
+    sugestoes.style.display = 'none';
+  }
+});
+
+// Pesquisar ao clicar no botão ou pressionar Enter
+botaoPesquisa.addEventListener('click', pesquisar);
+campoPesquisa.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') pesquisar();
+});
+
+// Fechar sugestões ao clicar fora
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.barra-pesquisa')) {
+    sugestoes.style.display = 'none';
+  }
+});
