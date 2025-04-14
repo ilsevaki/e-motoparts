@@ -1,11 +1,5 @@
 // Carrinho de compras
-let carrinho;
-try {
-  carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-} catch {
-  carrinho = [];
-  localStorage.removeItem('carrinho');
-}
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
 // Elementos DOM
 const elementos = {
@@ -88,7 +82,7 @@ function salvarCarrinho() {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
-// Menu Hamburguer
+// Menu Mobile
 if (elementos.menuHamburguer && elementos.menuPrincipal) {
   elementos.menuHamburguer.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -96,10 +90,9 @@ if (elementos.menuHamburguer && elementos.menuPrincipal) {
     elementos.menuPrincipal.classList.toggle('active');
   });
 
-  // Fecha o menu ao clicar fora (mobile)
+  // Fecha o menu ao clicar fora
   document.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768 && 
-        !elementos.menuPrincipal.contains(e.target) && 
+    if (!elementos.menuPrincipal.contains(e.target) && 
         !elementos.menuHamburguer.contains(e.target)) {
       elementos.menuPrincipal.classList.remove('active');
       elementos.menuHamburguer.classList.remove('active');
@@ -111,7 +104,6 @@ if (elementos.menuHamburguer && elementos.menuPrincipal) {
 elementos.dropdowns.forEach(dropdown => {
   const link = dropdown.querySelector('a');
   
-  // Comportamento para mobile
   link.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
       e.preventDefault();
@@ -122,7 +114,6 @@ elementos.dropdowns.forEach(dropdown => {
     }
   });
 
-  // Comportamento para desktop
   dropdown.addEventListener('mouseenter', function() {
     if (window.innerWidth > 768) {
       this.classList.add('active');
@@ -143,7 +134,7 @@ const totalSlides = document.querySelectorAll('.carrossel-item').length;
 function moveSlide(direction) {
   currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
   if (elementos.slides) {
-    elementos.slides.style.transform = `translateX(-${currentSlide * (300 + 20)}px)`;
+    elementos.slides.style.transform = `translateX(-${currentSlide * 100}%)`;
   }
 }
 
@@ -155,17 +146,12 @@ function toggleCarrinho() {
   }
 }
 
-// Fechar modal ao clicar fora
 elementos.modalCarrinho?.addEventListener('click', function(e) {
   if (e.target === this) toggleCarrinho();
 });
 
 // Notificação
-let notificacaoAtiva = false;
-
 function mostrarNotificacao(mensagem) {
-  if (notificacaoAtiva) return;
-  notificacaoAtiva = true;
   const notificacao = document.createElement("div");
   notificacao.className = "notificacao";
   notificacao.textContent = mensagem;
@@ -173,10 +159,7 @@ function mostrarNotificacao(mensagem) {
   
   setTimeout(() => {
     notificacao.classList.add("fade-out");
-    setTimeout(() => {
-      notificacao.remove();
-      notificacaoAtiva = false;
-    }, 500);
+    setTimeout(() => notificacao.remove(), 500);
   }, 3000);
 }
 
@@ -202,70 +185,4 @@ document.addEventListener('DOMContentLoaded', function() {
     atualizarCarrinho();
     toggleCarrinho();
   });
-});
-// Dados de exemplo (substitua pelos seus produtos reais)
-const produtos = [
-  { nome: "Pastilha de Freio", categoria: "Freios", link: "produtos/freios.html" },
-  { nome: "Óleo 20W50", categoria: "Lubrificantes", link: "produtos/lubrificantes.html" },
-  { nome: "Pneu Dianteiro", categoria: "Pneus", link: "produtos/pneus.html" }
-];
-
-// Elementos DOM
-const campoPesquisa = document.getElementById('campo-pesquisa');
-const botaoPesquisa = document.getElementById('botao-pesquisa');
-const sugestoes = document.getElementById('sugestoes');
-
-// Função de pesquisa
-function pesquisar() {
-  const termo = campoPesquisa.value.toLowerCase();
-  if (termo.trim() === '') return;
-
-  // Filtra produtos (substitua por busca real se tiver backend)
-  const resultados = produtos.filter(produto => 
-    produto.nome.toLowerCase().includes(termo) || 
-    produto.categoria.toLowerCase().includes(termo)
-  );
-
-  // Exibe resultados
-  if (resultados.length > 0) {
-    window.location.href = resultados[0].link; // Redireciona para o primeiro resultado
-  } else {
-    mostrarNotificacao("Nenhum produto encontrado!");
-  }
-}
-
-// Sugestões ao digitar
-campoPesquisa.addEventListener('input', function() {
-  const termo = this.value.toLowerCase();
-  sugestoes.innerHTML = '';
-
-  if (termo.length > 1) {
-    const filtrados = produtos.filter(produto => 
-      produto.nome.toLowerCase().includes(termo)
-    ).slice(0, 5); // Limita a 5 sugestões
-
-    filtrados.forEach(produto => {
-      const link = document.createElement('a');
-      link.href = produto.link;
-      link.textContent = produto.nome;
-      sugestoes.appendChild(link);
-    });
-
-    sugestoes.style.display = filtrados.length ? 'block' : 'none';
-  } else {
-    sugestoes.style.display = 'none';
-  }
-});
-
-// Pesquisar ao clicar no botão ou pressionar Enter
-botaoPesquisa.addEventListener('click', pesquisar);
-campoPesquisa.addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') pesquisar();
-});
-
-// Fechar sugestões ao clicar fora
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.barra-pesquisa')) {
-    sugestoes.style.display = 'none';
-  }
 });
